@@ -1,0 +1,10 @@
+
+.light-theme a:hover {
+	background: #EBEBEB;
+}
+
+.light-theme a {
+	background: none;
+	box-shadow: none;
+}
+/*# sourceMappingURL=simplePagination-flat.css.map */

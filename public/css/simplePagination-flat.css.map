@@ -1,0 +1,1 @@
+{"version":3,"sources":["simplePagination-flat.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"simplePagination-flat.css","sourcesContent":["\n.light-theme a:hover {\n\tbackground: #EBEBEB;\n}\n\n.light-theme a {\n\tbackground: none;\n\tbox-shadow: none;\n}"]}

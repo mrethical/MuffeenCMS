@@ -1,0 +1,1 @@
+{"version":3,"sources":["server-dir.js"],"names":[],"mappings":"AAAA;AACA","file":"server-dir.js","sourcesContent":["\r\nvar server_dir = 'http://server.local/';"]}

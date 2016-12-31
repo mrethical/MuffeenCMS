@@ -1,0 +1,1 @@
+{"version":3,"sources":["resources.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"resources.css","sourcesContent":["\na.resource-title {\n\tmargin: 5px 0px 5px 5px;\n\tdisplay: inline-block;\n}\n\nimg.resource-image {\n\twidth: 50px;\n\theight: 50px;\n}\n"]}

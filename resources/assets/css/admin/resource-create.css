@@ -1,0 +1,22 @@
+
+.dropzone {
+    border: 2px dashed #999;
+    border-radius: 5px;
+    background: #eee;
+}
+
+.dropzone .dz-message {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dropzone .dz-message .note {
+    font-size: 0.8em;
+    font-weight: 200;
+    display: block;
+    margin-top: 1.4rem;
+}
+
+.margin-top-one {
+    margin-top: 15px;
+}

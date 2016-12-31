@@ -1,0 +1,50 @@
+
+.post-tag-container {
+	margin: 3px 2px;
+	display: inline-block;
+	background-color: #eaeaea;
+	padding: 5px 7px;
+	border: 1px solid #acacac;
+	border-radius: 6px;
+}
+
+#post-tag-insert {
+	padding: 3px 7px;
+}
+
+#post-tag-insert input {
+	display: inline-block;
+	height: 24px;
+	width: 175px;
+}
+
+#post-tag-insert #post-tag-insert-save {
+	padding: 1px 7px;
+}
+
+.tt-menu {
+    min-width: 195px;
+    margin: 5px 0;
+    padding: 8px 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+	padding: 0px 8px;
+}
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+
+/*# sourceMappingURL=post-create.css.map */

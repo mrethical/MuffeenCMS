@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"style.css","sourcesContent":["\r\n.page-header h1 {\r\n    display: inline-block;\r\n    margin-top: 0px;\r\n}\r\n\r\n.page-header .btn {\r\n    margin-top: 5px;\r\n}\r\n\r\n.adjust-top {\r\n    margin-top: 50px;\r\n}"]}
