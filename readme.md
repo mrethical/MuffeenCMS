@@ -8,6 +8,7 @@ As of now it includes:
 * Login and Signup System (using Laravel built-in auth)
 * Resources management (for uploads)
 * Simple Blog System (still on progress)
+* Menu Editor
 
 # NOTE: for fresh installation
  - always set permission to storage and bootstrap/cache
