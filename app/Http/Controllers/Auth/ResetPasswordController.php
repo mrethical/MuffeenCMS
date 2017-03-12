@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Repositories\MenusRepositoryInterface;
+use App\Services\MenuService;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 
@@ -21,13 +23,16 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
+    private $_menus;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MenusRepositoryInterface $menus)
     {
+        $this->_menus = MenuService::getMenus($menus);
         $this->middleware('guest');
     }
 
@@ -45,8 +50,9 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request, $token = null)
     {
         $title = 'Reset Password | ' . config('app.name');
+        $menus = $this->_menus;
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email, 'title' => $title]
+            ['token' => $token, 'email' => $request->email, 'title' => $title, 'menus' => $menu]
         );
     }
 }

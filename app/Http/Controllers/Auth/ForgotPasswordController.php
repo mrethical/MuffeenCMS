@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Repositories\MenusRepositoryInterface;
+use App\Services\MenuService;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
@@ -20,13 +22,16 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+    private $_menus;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MenusRepositoryInterface $menus)
     {
+        $this->_menus = MenuService::getMenus($menus);
         $this->middleware('guest');
     }
 
@@ -38,6 +43,7 @@ class ForgotPasswordController extends Controller
     public function showLinkRequestForm()
     {
         $title = 'Reset Password | ' . config('app.name');
-        return view('auth.passwords.email', compact('title'));
+        $menus = $this->_menus;
+        return view('auth.passwords.email', compact('title', 'menus'));
     }
 }

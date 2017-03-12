@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Repositories\MenusRepositoryInterface;
+use App\Services\MenuService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -28,13 +30,16 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/admin';
 
+    private $_menus;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MenusRepositoryInterface $menus)
     {
+        $this->_menus = MenuService::getMenus($menus);
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -46,7 +51,8 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $title = 'Login | ' . config('app.name');
-        return view('auth.login', compact('title'));
+        $menus = $this->_menus;
+        return view('auth.login', compact('title', 'menus'));
     }
 
     /**
