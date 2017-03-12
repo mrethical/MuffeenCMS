@@ -144,10 +144,12 @@ class PostController extends Controller
             $post->author = $user->id;
             $post->slug = str_slug($request->title);
             $success = $post->save();
-            foreach ($request->tags as $tag_name)
-            {
-                $tag = PostsTag::firstOrCreate(['name' => $tag_name]);
-                $post->tags()->save($tag);
+            if ($request->tags) {
+                foreach ($request->tags as $tag_name)
+                {
+                    $tag = PostsTag::firstOrCreate(['name' => $tag_name]);
+                    $post->tags()->save($tag);
+                }
             }
             if ($success) {
                 $request->session()->flash('added', $post->id);
@@ -217,10 +219,11 @@ class PostController extends Controller
             $post->slug = str_slug($request->title);
             $success = $post->update();
             $post->tags()->detach();
-            foreach ($request->tags as $tag_name)
-            {
-                $tag = PostsTag::firstOrCreate(['name' => $tag_name]);
-                $post->tags()->save($tag);
+            if ($request->tags) {
+                foreach ($request->tags as $tag_name) {
+                    $tag = PostsTag::firstOrCreate(['name' => $tag_name]);
+                    $post->tags()->save($tag);
+                }
             }
             if ($success) {
                 $request->session()->flash('edited', $post->id);
