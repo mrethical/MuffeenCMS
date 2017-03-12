@@ -36,6 +36,9 @@
                 </ul>
             </li>
             <li>
+                <a href="{{ url('/admin/menus') }}"><i class="fa fa-list fa-fw"></i> Menus</a>
+            </li>
+            <li>
                 <a><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>

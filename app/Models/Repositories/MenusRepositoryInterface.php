@@ -2,11 +2,12 @@
 
 namespace App\Models\Repositories;
 
-interface PostsRepositoryInterface
+interface MenusRepositoryInterface
 {
     public function getAll();
     public function getCountAll();
     public function getAllWithLimit($limit, $offset);
     public function getPairAll();
-    public function getByID($id);
+    public function getAllNoParent();
+    public function getPossibleParent($id);
 }

@@ -49,5 +49,9 @@ class ControllerRoutesBinderServiceProvider extends ServiceProvider
             'App\Models\Repositories\PostsRepositoryInterface',
             'App\Models\Repositories\DbPostsRepository'
         );
+        $this->app->bind(
+            'App\Models\Repositories\MenusRepositoryInterface',
+            'App\Models\Repositories\DbMenusRepository'
+        );
     }
 }

@@ -60,19 +60,28 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $output = $request->input('output', 'page');
+        if ($output == 'page') {
+            if ($request->ajax()) {
+                $output = 'pair';
+            }
+        }
         if (Auth::user()->can('view_all', Post::class)) {
-            $limit = $request->input('limit', 10);
-            $offset = $request->input('offset', 0);
-            $posts = $this->_posts->getAllWithLimit($limit, $offset);
-            $count = $this->_posts->getCountAll();
-            $categories = $this->_posts_categories->getPairAll();
-            if ($output === 'page') {
-                $added = request()->session()->get('added', null);
-                return view('admin.posts.index', compact('posts', 'categories', 'count', 'added'));
-            } else if ($output === 'table') {
-                return view('admin.posts.tables.posts-table', compact('posts', 'categories', 'count'));
+            if ($output != 'pair') {
+                $limit = $request->input('limit', 10);
+                $offset = $request->input('offset', 0);
+                $posts = $this->_posts->getAllWithLimit($limit, $offset);
+                $count = $this->_posts->getCountAll();
+                $categories = $this->_posts_categories->getPairAll();
+                if ($output === 'page') {
+                    $added = request()->session()->get('added', null);
+                    return view('admin.posts.index', compact('posts', 'categories', 'count', 'added'));
+                } else if ($output === 'table') {
+                    return view('admin.posts.tables.posts-table', compact('posts', 'categories', 'count'));
+                } else {
+                    return response('', 204);
+                }
             } else {
-                return response('', 204);
+                return response()->json($this->_posts->getPairAll());
             }
         } else {
             if ($output === 'page') {
@@ -84,6 +93,8 @@ class PostController extends Controller
                 return response()->view(
                     'admin.posts.tables.posts-table',
                     compact('posts', 'categories', 'count'))->setStatusCode(403);
+            } else if ($output === 'pair') {
+                return response()->json([], 403);
             } else {
                 return response('', 403);
             }

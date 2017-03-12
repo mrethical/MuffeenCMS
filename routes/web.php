@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
-Route::get('/contact', 'PagesController@contact');
 
 // Auth
 Auth::routes();
@@ -52,6 +50,12 @@ Route::group(['middleware' => 'auth'], function() {
     ]]);
     Route::resource('admin/posts', 'Admin\PostController', ['except' => [
         'show'
+    ]]);
+
+    // Menus
+    Route::get('admin/menus/possible_parents/{id}', 'Admin\MenuController@possible_parents');
+    Route::resource('admin/menus', 'Admin\MenuController', ['except' => [
+        'create', 'show', 'edit'
     ]]);
 
 });

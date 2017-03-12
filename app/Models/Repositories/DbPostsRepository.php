@@ -23,6 +23,16 @@ class DbPostsRepository implements PostsRepositoryInterface
         return Post::take($limit)->offset($offset)->get();
     }
 
+    public function getPairAll()
+    {
+        $posts = Post::pluck('title', 'id');
+        $list = array();
+        foreach ($posts as $id=>$title) {
+            $list[$id] = $title;
+        }
+        return $list;
+    }
+
     public function getByID($id)
     {
         return Post::where('id', $id);

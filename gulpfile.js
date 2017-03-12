@@ -79,4 +79,9 @@ elixir(function(mix) {
         'admin/posts-tags.js'
     ], 'public/js/admin/posts-tags.js');
 
+    // ADMIN - menus
+    mix.scripts([
+        'admin/menus.js'
+    ], 'public/js/admin/menus.js');
+
 });

@@ -1,2 +1,2 @@
 
-var server_dir = 'http://server.local/';
+var server_dir = 'http://beta.server.local/';
