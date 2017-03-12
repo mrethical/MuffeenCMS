@@ -59,3 +59,5 @@ Route::group(['middleware' => 'auth'], function() {
     ]]);
 
 });
+
+Route::get('/{slug}', 'PagesController@post');

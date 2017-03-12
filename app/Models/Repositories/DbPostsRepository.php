@@ -38,4 +38,9 @@ class DbPostsRepository implements PostsRepositoryInterface
         return Post::where('id', $id);
     }
 
+    public function getBySlug($slug)
+    {
+        return Post::where('slug', $slug)->first();
+    }
+
 }
