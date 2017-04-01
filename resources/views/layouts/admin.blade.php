@@ -73,7 +73,7 @@
     </div>
 
     <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="{{ url('') }}">{{ config('app.name') }}</a>.</strong> All rights reserved.
+        <strong> Copyright &copy; 2017 | <a href="https://github.com/muffeen/muffeen-cms">MuffeenCMS</a> </strong>
     </footer>
 
 </div>
