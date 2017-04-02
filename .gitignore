@@ -2,7 +2,7 @@
 /public/storage
 /public/css
 /public/js
-/public/js/mix-manifest.json
+/public/mix-manifest.json
 /public/hot
 /storage/*.key
 /vendor
