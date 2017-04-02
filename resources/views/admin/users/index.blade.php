@@ -1,5 +1,11 @@
 @extends('_layouts.admin')
 
+@section('styles')
+
+    <link rel="stylesheet" href="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.css') }}">
+
+@stop
+
 @section('sidebar')
 
     @include('_layouts.admin-sidebar', ['active' => 'Users-All Users'])
@@ -99,7 +105,8 @@
 
 @section('scripts')
 
-    <script src="http://beta2.server.local/vendor/simple-pagination/jquery.simplePagination.js"></script>
+    <script src="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
+    <script src="{{ mix('vendor/jquery-simplePagination/jquery-simplePagination.js') }}"></script>
     <script src="{{ mix('js/admin/users/index.js') }}"></script>
 
 @stop

@@ -32,7 +32,7 @@ if (!isset($active)) {
                         <a href="{{ url('/admin/users/create') }}">Add New</a>
                     </li>
                     <li class="{{ ($active[1] == 'Your Profile') ? 'active' : '' }}">
-                        <a href="{{ url('/admin /profile') }}">Your Profile</a>
+                        <a href="{{ url('/admin/profile') }}">Your Profile</a>
                     </li>
                 </ul>
             </li>

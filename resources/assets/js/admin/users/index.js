@@ -75,20 +75,12 @@ function refreshTable(page, limit) {
     });
 }
 
-let delete_success_alert = `
-    <div class="alert alert-success alert-dismissable" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <p>User deleted successfully.</p>
-    </div>
-`;
-
 $(document).ready(() => {
     $('#modal-delete').on('show.bs.modal', (event) => {
         let button = $(event.relatedTarget);
         let id = button.data('id');
         let name = button.data('name');
         $('#modal-delete-submit').click(() => {
-            console.log('asd');
             $('#modal-delete-submit').empty()
                 .append($('<i class="fa fa-spin fa-fw fa-spinner"></i>'));
             let data  = `_token=${$('#user-token').val()}&_method=DELETE`;
@@ -96,7 +88,7 @@ $(document).ready(() => {
                 .done(() => {
                     refreshTable(1, 10);
                     $('#modal-delete').modal('hide');
-                    $('#content-body').prepend($(delete_success_alert));
+                    toastSuccess('User deleted successfully');
                 })
                 .fail((response) => {
                     redirectUnauthorized(response);

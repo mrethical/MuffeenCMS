@@ -14,6 +14,7 @@ class UserPolicy
         if (in_array($admin->type, ['superadmin', 'admin'])) {
             return true;
         }
+        return false;
     }
 
     public function view(User $admin, User $user)
@@ -22,9 +23,8 @@ class UserPolicy
             return true;
         } else if ($admin->type == 'admin') {
             return $user->type != 'superadmin';
-        } else {
-            return $admin->id = $user->id;
         }
+        return $admin->id = $user->id;
     }
 
     public function create(User $admin)
@@ -32,6 +32,7 @@ class UserPolicy
         if (in_array($admin->type, ['superadmin', 'admin'])) {
             return true;
         }
+        return false;
     }
 
     public function update(User $admin, User $user)
@@ -40,17 +41,17 @@ class UserPolicy
             return true;
         } else if ($admin->type == 'admin') {
             return $user->type != 'superadmin';
-        } else {
-            return $admin->id = $user->id;
         }
+        return $admin->id = $user->id;
     }
 
-    public function delete(User $admin  , User $user)
+    public function delete(User $admin, User $user)
     {
         if ($admin->type == 'superadmin' && $admin->id != $user->id) {
             return true;
         } else if ($admin->type == 'admin') {
             return $user->type != 'superadmin';
         }
+        return false;
     }
 }
