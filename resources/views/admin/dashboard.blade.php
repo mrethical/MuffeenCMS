@@ -2,7 +2,7 @@
 
 @section('sidebar')
 
-    @include('_layouts._admin-sidebar.superadmin', ['active' => '1'])
+    @include('_layouts.admin-sidebar', ['active' => 'Dashboard'])
 
 @stop
 
@@ -11,7 +11,11 @@
     <section class="content-header">
         <h1>Dashboard</h1>
         <ol class="breadcrumb">
-            <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+            <li class="active">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Dashboard
+                </a>
+            </li>
         </ol>
     </section>
 
