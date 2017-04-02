@@ -69,7 +69,7 @@
                         <label>Actions:</label>
                         <br>
                         <a href="{{ url('/admin/users/create') }}" class="btn btn-flat btn-primary">Add New</a>
-                        <div id="pagination" class="pull-right">
+                        <div id="pagination" class="pull-right"></div>
                     </div>
                     <div class="overlay">
                         <i class="fa fa-refresh fa-spin"></i>
