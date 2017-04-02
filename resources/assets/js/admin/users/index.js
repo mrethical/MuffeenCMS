@@ -1,28 +1,20 @@
 let empty_table_row = '';
 
 function generateRow(row_data) {
-    if (utype !== 'superadmin' && row_data.type === 'superadmin') {
-        return '';
-    }
-
     let html = `
         <tr>
             <td>${row_data.name}</td>
             <td>${row_data.type}</td>
             <td>${row_data.email}</td>
             <td> 
-    `;
-    if (utype === 'admin' || utype === 'superadmin') {
-        html += `
                 <a class="btn btn-default btn-xs" href="${server_url}/admin/users/${row_data.id}/edit">Edit</a>
-        `;
-        if (row_data.type !== 'superadmin' && uid !== row_data.id) {
-            html += `
+    `;
+    if (row_data.type !== 'superadmin' && uid !== row_data.id) {
+        html += `
                 <button type="button" class="btn btn-default btn-xs" data-action="Delete"
                     data-toggle="modal" data-target="#modal-delete" data-id="${row_data.id}">Delete
                 </button>
-            `;
-        }
+        `;
     }
     html += `
             </td>
@@ -41,16 +33,16 @@ function generatePagination(count, limit) {
             items: count,
             itemsOnPage: limit,
             onPageClick: (pageNumber) => {
-                $('#pagination').hide();
+                pagination.hide();
                 refreshTable(pageNumber, limit);
                 return false;
             }
         });
         pagination.data('count', count);
     } else {
-        $('#pagination').show();
+        pagination.show();
     }
-    $('#pagination').find('ul').addClass('pagination');
+    pagination.find('ul').addClass('pagination');
 }
 
 function refreshTable(page, limit) {
@@ -71,7 +63,7 @@ function refreshTable(page, limit) {
     })
     .fail((response) => {
         redirectUnauthorized(response);
-        showErrorAlert(response, $('#content-body'));
+        showErrorToast();
     });
 }
 
@@ -92,7 +84,7 @@ $(document).ready(() => {
                 })
                 .fail((response) => {
                     redirectUnauthorized(response);
-                    showErrorAlert(response, $('#content-body'));
+                    showErrorToast();
                     $('#modal-delete').modal('hide');
                 });
         })
