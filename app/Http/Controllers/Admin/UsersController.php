@@ -47,7 +47,7 @@ class UsersController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:users|max:255',
-            'email' => 'required|unique:users|max:255',
+            'email' => 'required|email|unique:users|max:255',
             'type' => 'required',
             'password' => 'required|confirmed|min:6|max:255'
         ]);
@@ -81,7 +81,7 @@ class UsersController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:users,name,'.$user->id.'|max:255',
-            'email' => 'required|unique:users,email,'.$user->id.'|max:255',
+            'email' => 'required|email|unique:users,email,'.$user->id.'|max:255',
             'type' => 'required',
             'password' => 'required|confirmed|min:6|max:255'
         ]);
