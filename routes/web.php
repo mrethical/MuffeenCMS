@@ -18,5 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
+
     Route::get('/admin', 'Admin\DashboardController@index');
+
+    // Admin User
+    Route::get('/admin/profile', 'Admin\ProfileController@edit');
+    Route::patch('/admin/profile', 'Admin\ProfileController@update');
+    Route::resource('admin/users', 'Admin\UsersController', ['except' => [
+        'show'
+    ]]);
+
 });

@@ -19,6 +19,12 @@
     <header class="main-header">
         <a href="{{ url('/admin') }}" class="logo">{{ config('app.name') }}</a>
         <nav class="navbar navbar-static-top" role="navigation">
+            <a href="#" class="sidebar-toggle visible-xs" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
@@ -34,10 +40,13 @@
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{{ url('/admin/profile') }}" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <form method="post" action="{{ url('/logout') }}">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn btn-default btn-flat" value="Sign out">
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -53,7 +62,7 @@
     </div>
 
     <footer class="main-footer">
-        <strong> Copyright &copy; 2017 | <a href="https://github.com/muffeen/muffeen-cms">MuffeenCMS</a> </strong>
+        Copyright &copy; 2017 | <a href="https://github.com/muffeen/muffeen-cms">MuffeenCMS</a>
     </footer>
 
 </div>
@@ -61,6 +70,11 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
+<script>
+    var server_url = '{{ url('/') }}';
+    var uid = {{ auth()->user()->id }};
+    var utype = '{{ auth()->user()->type }}';
+</script>
 @yield('scripts')
 </body>
 </html>

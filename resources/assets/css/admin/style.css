@@ -2,3 +2,14 @@
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
     height: 85px;
 }
+
+table > tbody > tr.empty-table-row > td {
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #fff;
+}
+
+.pagination {
+    margin: 0;
+}
