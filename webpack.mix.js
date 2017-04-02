@@ -13,6 +13,20 @@ const { mix } = require('laravel-mix');
 
 let admin_helper = 'resources/assets/js/admin/helpers.js';
 
-mix.styles('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
+mix
+    // vendor
+    .copy('node_modules/jquery-toast-plugin/dist/jquery.toast.min.css',
+        'public/vendor/jquery-toast-plugin/jquery.toast.min.css')
+    .copy('node_modules/jquery-toast-plugin/dist/jquery.toast.min.js',
+        'public/vendor/jquery-toast-plugin/jquery.toast.min.js')
+    .js('resources/assets/vendor/jquery-simplePagination/jquery-simplePagination.js',
+        'public/vendor/jquery-simplePagination/jquery-simplePagination.js')
+
+    // styles
+    .styles('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
+
+    // scripts
     .babel([admin_helper, 'resources/assets/js/admin/users/index.js'], 'public/js/admin/users/index.js')
+
+    // autoload
     .autoload({});

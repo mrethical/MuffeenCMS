@@ -13,3 +13,7 @@ table > tbody > tr.empty-table-row > td {
 .pagination {
     margin: 0;
 }
+
+.jq-toast-single .jq-toast-loaded {
+    width: 0;
+}

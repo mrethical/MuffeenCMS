@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }}</title>
+    <title>Admin Panel | {{ config('app.name') }}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,7 +17,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
-        <a href="{{ url('/admin') }}" class="logo">{{ config('app.name') }}</a>
+        <a href="{{ url('/admin') }}" class="logo">MuffeenCMS</a>
         <nav class="navbar navbar-static-top" role="navigation">
             <a href="#" class="sidebar-toggle visible-xs" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
@@ -29,13 +29,13 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span>Alexander Pierce</span>
+                            <span>{{ auth()->user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 <p>
-                                    Alexander Pierce
-                                    <small>superadmin</small>
+                                    {{ auth()->user()->name }}
+                                    <small>{{ auth()->user()->type }}</small>
                                 </p>
                             </li>
                             <li class="user-footer">
