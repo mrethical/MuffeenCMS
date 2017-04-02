@@ -17,10 +17,29 @@ if (!isset($active)) {
             <li class="{{ ($active[0] == 'Dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
             </li>
+            <li class="treeview {{ ($active[0] == 'Resources') ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-file"></i> <span>Resources</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu menu-open">
+                    <li class="{{ ($active[1] == 'All Resources') ? 'active' : '' }}">
+                        <a href="{{ url('/admin/resources') }}">All Resources</a>
+                    </li>
+                    <li class="{{ ($active[1] == 'Add New') ? 'active' : '' }}">
+                        <a href="{{ url('/admin/resources/create') }}">Add New</a>
+                    </li>
+                    <li class="{{ ($active[1] == 'Categories') ? 'active' : '' }}">
+                        <a href="{{ url('/admin/resources/categories') }}">Categories</a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview {{ ($active[0] == 'Users') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Users</span>
-                        <span class="pull-right-container">
+                    <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>

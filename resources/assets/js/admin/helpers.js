@@ -7,7 +7,6 @@
 class JqueryToast {
 
     static show(message, heading = '', icon = '') {
-        console.log(message);
         let data = {};
         data.showHideTransition = 'plain';
         data.position = {
@@ -23,7 +22,6 @@ class JqueryToast {
 }
 
 function toastSuccess(message, heading = 'Success') {
-    console.log(message);
     JqueryToast.show(message, heading, 'success');
 }
 
@@ -46,14 +44,33 @@ function toastError(message, heading = 'Error') {
  *
  */
 
+function listValidationErrors(errors) {
+    let html = '<ul>';
+    for (let key in errors) {
+        errors[key].forEach((value) => {
+            html += `<li>${value}</li>`;
+        })
+    }
+    return html + '</ul>';
+}
+
+function showValidationAlert(response, element) {
+    if (response.status === 422) {
+        element.prepend($(`
+            <div class="alert alert-danger alert-dismissible validation">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                ${listValidationErrors(response.responseJSON)}
+              </div>
+        `));
+    }
+}
+
 function redirectUnauthorized(response) {
     if (response.status === 403) {
         window.location.replace(server_url + '/login?unauthorized=1');
     }
 }
 
-function showErrorAlert(response) {
-    if (response.status === 500) {
-        toastError('An error has occurred. Please refresh the page.');
-    }
+function showErrorToast() {
+    toastError('An error has occurred. Please refresh the page.');
 }

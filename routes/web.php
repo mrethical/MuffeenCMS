@@ -21,11 +21,20 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/admin', 'Admin\DashboardController@index');
 
-    // Admin User
+    // Users
     Route::get('/admin/profile', 'Admin\ProfileController@edit');
     Route::patch('/admin/profile', 'Admin\ProfileController@update');
     Route::resource('admin/users', 'Admin\UsersController', ['except' => [
         'show'
     ]]);
+
+    // Resources
+    Route::resource('admin/resources/categories', 'Admin\ResourceCategoriesController', ['except' => [
+        'create', 'edit'
+    ]]);
+    Route::resource('admin/resources', 'Admin\ResourceController', ['except' => [
+        'show'
+    ]]);
+
 
 });

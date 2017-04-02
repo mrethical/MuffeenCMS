@@ -27,6 +27,8 @@ mix
 
     // scripts
     .babel([admin_helper, 'resources/assets/js/admin/users/index.js'], 'public/js/admin/users/index.js')
+    .babel([admin_helper, 'resources/assets/js/admin/resources/categories.js'],
+        'public/js/admin/resources/categories.js')
 
     // autoload
     .autoload({});
