@@ -24,11 +24,17 @@ mix
 
     // styles
     .styles('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
+    .styles('resources/assets/css/admin/resources/create.css', 'public/css/admin/resources/create.css')
+    .styles('resources/assets/css/admin/resources/index.css', 'public/css/admin/resources/index.css')
 
     // scripts
     .babel([admin_helper, 'resources/assets/js/admin/users/index.js'], 'public/js/admin/users/index.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/categories.js'],
         'public/js/admin/resources/categories.js')
+    .babel([admin_helper, 'resources/assets/js/admin/resources/create.js'],
+        'public/js/admin/resources/create.js')
+    .babel([admin_helper, 'resources/assets/js/admin/resources/index.js'],
+        'public/js/admin/resources/index.js')
 
     // autoload
     .autoload({});

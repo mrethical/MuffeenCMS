@@ -7,6 +7,12 @@ use App\Models\ResourceCategory;
 class ResourceCategories
 {
 
+    public static function getAllByName()
+    {
+        return ResourceCategory::orderBy('name')
+            ->get();
+    }
+
     public static function getAllWithLimit($limit, $offset = 0)
     {
         return ResourceCategory::select(['id', 'name'])

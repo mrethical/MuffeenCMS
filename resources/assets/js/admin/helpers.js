@@ -16,6 +16,7 @@ class JqueryToast {
         data.text = message;
         data.heading = heading;
         data.icon = icon;
+        data.stack = 4;
         $.toast(data);
     }
 
@@ -37,6 +38,52 @@ function toastError(message, heading = 'Error') {
     JqueryToast.show(message, heading, 'error');
 }
 
+/*
+ *  Time Formatter
+ *
+ */
+
+function timestamp(timestamp)
+{
+    let miliseconds = new Date(timestamp.replace(' ', 'T')).getTime();
+    let seconds = miliseconds / 1000;
+    let seconds_now = Date.now() / 1000;
+    let difference = seconds_now - seconds;
+    if (difference < 11) return 'Just Now';
+    else if (difference < 60) return difference + ' seconds ago';
+    else if (difference < 120) return '1 minute ago';
+    else if (difference < 3600) return Math.floor(difference/60) + ' minutes ago';
+    else if (difference < 7200) return '1 hour ago';
+    else if (difference < 86400) return Math.floor(difference/3600) + ' hours ago';
+    else if (difference < 172000) return 'Yesterday';
+    else return miliseconds.format("mm/dd/yyyy");
+}
+
+/*
+ *  Bits Formatter
+ *
+ */
+
+function format_bytes(bytes, format, precision = 2) {
+    let list_units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let index = list_units.findIndex((element) => { return element === format });
+    let units = [];
+    if (index)
+    {
+        for(let i = 0; i < list_units.length; i++)
+        {
+            units.push(list_units[i]);
+        }
+    }
+
+    bytes = Math.max(bytes, 0);
+    let pow = Math.floor((bytes ? Math.log(bytes) : 0) / Math.log(1024));
+    pow = Math.min(pow, units.length - 1);
+
+    bytes /= Math.pow(1024, pow);
+
+    return Math.round(bytes, precision) + ' ' + units[pow];
+}
 
 
 /*
@@ -63,6 +110,10 @@ function showValidationAlert(response, element) {
               </div>
         `));
     }
+}
+
+function removeValidationAlerts() {
+    $('.alert.validation').remove();
 }
 
 function redirectUnauthorized(response) {

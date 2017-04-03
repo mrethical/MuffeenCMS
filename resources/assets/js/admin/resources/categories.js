@@ -59,10 +59,6 @@ function refreshTable(page, limit) {
         });
 }
 
-function removeValidationAlerts() {
-    $('.alert.validation').remove();
-}
-
 $(document).ready(() => {
     let modal_category = $('#modal-category');
     modal_category.on('show.bs.modal', (event) => {
