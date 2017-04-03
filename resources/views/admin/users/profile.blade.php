@@ -37,16 +37,14 @@
             </div>
         @endif
 
-        <div class="row">
+        @if($edited = request()->session()->get('edited', null))
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <p>Profile was updated successfully.</p>
+            </div>
+        @endif
 
-            @if($edited)
-                <div class="col-lg-12">
-                    <div class="alert alert-success alert-dismissable" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <p>Profile was updated successfully.</p>
-                    </div>
-                </div>
-            @endif
+        <div class="row">
 
             <div class="col-xs-12">
                 @include('admin.users.form', [

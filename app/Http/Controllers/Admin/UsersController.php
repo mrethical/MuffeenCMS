@@ -27,8 +27,7 @@ class UsersController extends Controller
                 ->header('Expires', '0');
         }
 
-        $added = request()->session()->get('added', null);
-        return view('admin.users.index', compact('added'));
+        return view('admin.users.index');
     }
 
     public function create()
@@ -68,10 +67,7 @@ class UsersController extends Controller
     {
         $this->authorize('update', $user);
 
-        return view('admin.users.edit', [
-            'user' => $user,
-            'edited' => request()->session()->get('edited', null)
-        ]);
+        return view('admin.users.edit', compact('user'));
     }
 
 

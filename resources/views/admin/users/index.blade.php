@@ -33,16 +33,14 @@
 
     <section id="content-body" class="content">
 
-        <div class="row">
+        @if ($added = request()->session()->get('added', null))
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p>New user added. <a href="{{ url('admin/users/'. $added . '/edit') }}">Edit User</a></p>
+            </div>
+        @endif
 
-            @if ($added)
-                <div class="col-xs-12">
-                    <div class="alert alert-success alert-dismissable" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <p>New user added. <a href="{{ url('admin/users/'. $added . '/edit') }}">Edit User</a></p>
-                    </div>
-                </div>
-            @endif
+        <div class="row">
 
             <div class="col-xs-12">
                 <div class="box">
