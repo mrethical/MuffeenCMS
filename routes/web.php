@@ -42,5 +42,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('admin/posts/categories', 'Admin\PostCategoriesController', ['except' => [
         'create', 'edit'
     ]]);
+    Route::resource('admin/posts/tags', 'Admin\PostTagsController', ['except' => [
+        'create', 'edit'
+    ]]);
+    Route::resource('admin/posts', 'Admin\PostsController', ['except' => [
+        'show'
+    ]]);
 
 });

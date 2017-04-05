@@ -64,7 +64,10 @@ class ResourceCategoriesController extends Controller
 
     public function destroy(ResourceCategory $category)
     {
-        //
+        $this->authorize('delete', $category);
+        $category->delete();
+
+        return response()->json(['success' => 'success']);
     }
     
 }

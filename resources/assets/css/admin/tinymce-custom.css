@@ -1,0 +1,8 @@
+
+.mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset {
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.mce-ico {
+    font-family: 'tinymce', Arial !important;
+}

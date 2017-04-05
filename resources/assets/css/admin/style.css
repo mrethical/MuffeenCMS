@@ -10,6 +10,11 @@ table > tbody > tr.empty-table-row > td {
     background-color: #fff;
 }
 
+.form-control[readonly] {
+    background-color: #fff;
+    opacity: 1;
+}
+
 .pagination {
     margin: 0;
 }

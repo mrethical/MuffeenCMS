@@ -34,6 +34,9 @@ if (!isset($active)) {
                     <li class="{{ ($active[1] == 'Categories') ? 'active' : '' }}">
                         <a href="{{ url('/admin/posts/categories') }}">Categories</a>
                     </li>
+                    <li class="{{ ($active[1] == 'Tags') ? 'active' : '' }}">
+                        <a href="{{ url('/admin/posts/tags') }}">Tags</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ ($active[0] == 'Resources') ? 'active' : '' }}">

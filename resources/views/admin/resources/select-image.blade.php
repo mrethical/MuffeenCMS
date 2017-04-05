@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/image-picker/0.3.0/image-picker.min.css" />
 @stop
 
-<button id="open-image-model" data-toggle="modal" data-target="#modal-image"></button>
+<button style="display: none" id="open-image-model" data-toggle="modal" data-target="#modal-image"></button>
 <div class="modal fade" id="modal-image" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
