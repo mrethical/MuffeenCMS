@@ -1,12 +1,7 @@
 
-<?php if (!isset($with_toast)) $with_toast = true; ?>
-
 @section('styles')
-    @if($with_toast)
-        <link rel="stylesheet" href="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.css') }}">
-    @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/image-picker/0.3.0/image-picker.min.css" />
-@stop
+@append
 
 <button style="display: none" id="open-image-model" data-toggle="modal" data-target="#modal-image"></button>
 <div class="modal fade" id="modal-image" tabindex="-1" role="dialog">
@@ -43,13 +38,9 @@
 </div>
 
 @section('scripts')
-    @if($with_toast)
-        <script src="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
-    @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/image-picker/0.3.0/image-picker.min.js"></script>
     <script>
         var uploads_small_url = '{{ $uploads_small_url }}/';
         var uploads_url = '{{ $uploads_url }}/';
     </script>
-    <script src="{{ mix('js/admin/resources/select-image.js') }}"></script>
-@stop
+@append

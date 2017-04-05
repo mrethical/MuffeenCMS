@@ -1,6 +1,6 @@
 
-let input = null;
-let input_name = null;
+let select_image_input = null;
+let select_image_input_name = null;
 
 function refreshImageCategories() {
     $.get( `${server_url}/admin/resources/categories?ordered=1`, (data) => {
@@ -29,8 +29,8 @@ function refreshImages(category_id) {
                     value="${ val.id }">${ val.title }</option>`;
         });
         $('#modal-image-name').empty().append($(html));
-        if (input !== null) {
-            $('select.image-picker option[value="' + input.val() + '"]').prop("selected", true);
+        if (select_image_input !== null) {
+            $('select.image-picker option[value="' + select_image_input.val() + '"]').prop("selected", true);
         }
         $("select.image-picker").imagepicker({
             show_label: true,
@@ -60,24 +60,24 @@ $(document).ready(() => {
         let element = $(event.relatedTarget);
         let temp = element.data('input');
         if (temp) {
-            input = $(element.data('input'));
+            select_image_input = $(element.data('input'));
         }
         temp = element.data('input-name');
         if (temp) {
-            input_name = $(element.data('input-name'));
+            select_image_input_name = $(element.data('input-name'));
         }
         refreshImageCategories();
     })
     .css('z-index', '65540');
 
     $('#modal-image-submit').click(function() {
-        if (input !== null) {
-            input.val($('#modal-image-name').val());
-            input = null;
+        if (select_image_input !== null) {
+            select_image_input.val($('#modal-image-name').val());
+            select_image_input = null;
         }
-        if (input_name !== null) {
-            input_name.val($('#modal-image-name option:selected').data('main-img-src'));
-            input_name = null;
+        if (select_image_input_name !== null) {
+            select_image_input_name.val($('#modal-image-name option:selected').data('main-img-src'));
+            select_image_input_name = null;
         }
         $('#modal-image').modal('hide');
     });

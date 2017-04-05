@@ -34,21 +34,17 @@ mix
     .styles('resources/assets/css/admin/posts/form-tags.css', 'public/css/admin/posts/form-tags.css')
 
     // scripts
-    .babel([admin_helper, 'resources/assets/js/admin/users/index.js'], 'public/js/admin/users/index.js')
+    .babel('resources/assets/js/admin/users/index.js', 'public/js/admin/users/index.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/categories.js'],
         'public/js/admin/resources/categories.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/create.js'],
         'public/js/admin/resources/create.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/index.js'],
         'public/js/admin/resources/index.js')
-    .babel([admin_helper, 'resources/assets/js/admin/resources/select-image.js'],
-        'public/js/admin/resources/select-image.js')
     .babel([admin_helper, 'resources/assets/js/admin/posts/categories.js'],
         'public/js/admin/posts/categories.js')
     .babel([admin_helper, 'resources/assets/js/admin/posts/tags.js'],
         'public/js/admin/posts/tags.js')
-    .babel([admin_helper, 'resources/assets/js/admin/posts/form-tags.js'],
-        'public/js/admin/posts/form-tags.js')
 
     // autoload
     .autoload({});
