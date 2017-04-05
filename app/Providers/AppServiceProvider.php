@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +16,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        View::composer('admin.resources.select-image', function($view) {
+            $view->with('resource_categories', \App\Repositories\ResourceCategories::getAllByName());
+            $view->with('resources', \App\Repositories\Resources::getAllImageByName());
+            $view->with('uploads_small_url', \App\Services\Uploads::getUploadUrls()['upload_images_small']);
+            $view->with('uploads_url', \App\Services\Uploads::getUploadUrls()['upload']);
+        });
     }
 
     /**

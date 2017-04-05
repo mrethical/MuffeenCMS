@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('admin/resources/categories', 'Admin\ResourceCategoriesController', ['except' => [
         'create', 'edit'
     ]]);
+    Route::get('admin/resources/filter', 'Admin\ResourcesController@filter');
     Route::resource('admin/resources', 'Admin\ResourcesController', ['except' => [
         'show'
     ]]);

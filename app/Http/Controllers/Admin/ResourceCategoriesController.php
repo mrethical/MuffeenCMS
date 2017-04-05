@@ -15,6 +15,9 @@ class ResourceCategoriesController extends Controller
         $this->authorize('view_all', ResourceCategory::class);
 
         if(request()->ajax()) {
+            if (request('ordered')) {
+                return response()->json(ResourceCategories::getAllByName());
+            }
             return response()->json([
                 'list' => ResourceCategories::getAllWithLimit(
                     request('limit', 100),

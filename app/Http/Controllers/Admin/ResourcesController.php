@@ -34,6 +34,25 @@ class ResourcesController extends Controller
         return view('admin.resources.index', compact('categories'));
     }
 
+    public function filter()
+    {
+        $this->authorize('view_all', Resource::class);
+
+        $category_id = request('category', -1);
+        $images = request('images', 0);
+
+        if ($category_id == -1) {
+            if ($images) {
+                return response()->json(Resources::getAllImageByName());
+            }
+            return response()->json(Resources::getAllByName());
+        }
+        if ($images) {
+            return response()->json(Resources::getImagesByCategoryByName($category_id));
+        }
+        return response()->json(Resources::getByCategoryByName($category_id));
+    }
+
     public function create()
     {
         $this->authorize('create', Resource::class);
