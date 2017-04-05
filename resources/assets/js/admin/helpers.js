@@ -50,7 +50,7 @@ function timestamp(timestamp)
     let seconds_now = Date.now() / 1000;
     let difference = seconds_now - seconds;
     if (difference < 11) return 'Just Now';
-    else if (difference < 60) return difference + ' seconds ago';
+    else if (difference < 60) return Math.floor(difference) + ' seconds ago';
     else if (difference < 120) return '1 minute ago';
     else if (difference < 3600) return Math.floor(difference/60) + ' minutes ago';
     else if (difference < 7200) return '1 hour ago';
