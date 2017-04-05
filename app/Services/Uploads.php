@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use ErrorException;
 use File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -67,11 +66,16 @@ class Uploads
         return true;
     }
 
+    public static function imageExtensions()
+    {
+        return ['jpg', 'jpeg', 'png', 'gif'];
+    }
+
     private static function isImage(UploadedFile $file)
     {
         return in_array(
             strtolower($file->guessClientExtension()),
-            ['jpg', 'jpeg', 'png', 'gif']
+            self::imageExtensions()
         );
     }
 
