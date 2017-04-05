@@ -36,4 +36,10 @@ Route::group(['middleware' => 'auth'], function() {
         'show'
     ]]);
 
+    // Posts
+    Route::get('admin/posts/categories/possible_parent', 'Admin\PostCategoriesController@possible_parent');
+    Route::resource('admin/posts/categories', 'Admin\PostCategoriesController', ['except' => [
+        'create', 'edit'
+    ]]);
+
 });
