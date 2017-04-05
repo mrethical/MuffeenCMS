@@ -94,7 +94,8 @@ class Uploads
         $filename_err_count = count($filename_err);
         $file_ext = $filename_err[$filename_err_count-1];
         switch($file_ext){
-            case 'jpg' || 'jpeg':
+            case 'jpg':
+            case 'jpeg':
                 $small_source = imagecreatefromjpeg($target_path);
                 break;
             case 'png':
@@ -110,13 +111,14 @@ class Uploads
         imagecopyresampled($small_create, $small_source, 0, 0, 0, 0, $small_width, $small_height, $width, $height);
         imagecopyresampled($medium_create, $medium_source, 0, 0, 0, 0, $medium_width, $medium_height, $width, $height);
         switch($file_ext){
-            case 'jpg' || 'jpeg':
+            case 'jpg':
+            case 'jpeg':
                 imagejpeg($small_create, $small, 80);
                 imagejpeg($medium_create, $medium, 80);
                 break;
             case 'png':
-                imagepng($small_create, $small, 80);
-                imagepng($medium_create, $medium, 80);
+                imagepng($small_create, $small);
+                imagepng($medium_create, $medium);
                 break;
             case 'gif':
                 imagegif($small_create, $small);
