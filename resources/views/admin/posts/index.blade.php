@@ -8,7 +8,7 @@
 
 @section('sidebar')
 
-    @include('_layouts.admin-sidebar', ['active' => 'Posts-Tags'])
+    @include('_layouts.admin-sidebar', ['active' => 'Posts-All Posts'])
 
 @stop
 
@@ -16,22 +16,29 @@
 
     <section class="content-header">
         <h1>
-            Tags
+            All Posts
             <small>Posts</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <a href="{{ url('/admin/posts') }}">
+                <a href="#">
                     <i class="fa fa-thumb-tack"></i> Posts
                 </a>
             </li>
             <li class="active">
-                <a href="#">Tags</a>
+                <a href="#">All Posts</a>
             </li>
         </ol>
     </section>
 
     <section id="content-body" class="content">
+
+        @if ($added = request()->session()->get('added', null))
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p>New post added. <a href="{{ url('admin/posts/'. $added . '/edit') }}">Edit Post</a></p>
+            </div>
+        @endif
 
         <div class="row">
 
@@ -41,15 +48,17 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Date Published</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody id="table-body">
                             <tr class="empty-table-row">
-                                <td colspan="2">
-                                    No records to show.
-                                    <a data-toggle="modal" data-target="#modal-tag" data-action="Add New">Add New</a>
+                                <td colspan="5">
+                                    No records to show. <a href="{{ url('/admin/posts/create') }}">Add New</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -58,8 +67,7 @@
                     <div class="box-footer">
                         <label>Actions:</label>
                         <br>
-                        <a data-toggle="modal" data-target="#modal-tag" data-action="Add New"
-                           class="btn btn-flat btn-primary">Add New</a>
+                        <a href="{{ url('/admin/posts/create') }}" class="btn btn-flat btn-primary">Add New</a>
                         <div id="pagination" class="pull-right"></div>
                     </div>
                     <div class="overlay">
@@ -72,32 +80,8 @@
 
     </section>
 
-    <input type="hidden" id="_token" value="{{ csrf_token() }}">
-
-    <div class="modal fade" id="modal-tag" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="modal-tag-label"></h4>
-                </div>
-                <div id="modal-tag-body" class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="modal-tag-submit">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+        <input type="hidden" id="user-token" value="{{ csrf_token() }}" />
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +89,7 @@
                     <h4 class="modal-title" id="modal-delete-label">Are you sure?</h4>
                 </div>
                 <div class="modal-body">
-                    <p>You are about to delete a user. 'Cancel' to stop, 'OK' to delete.</p>
+                    <p>You are about to delete a posts. 'Cancel' to stop, 'OK' to delete.</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" id="user-id">
@@ -122,6 +106,6 @@
 
     <script src="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
     <script src="{{ mix('vendor/jquery-simplePagination/jquery-simplePagination.js') }}"></script>
-    <script src="{{ mix('js/admin/posts/tags.js') }}"></script>
+    <script src="{{ mix('js/admin/posts/index.js') }}"></script>
 
 @stop

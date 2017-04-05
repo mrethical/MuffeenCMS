@@ -34,6 +34,7 @@ class UsersController extends Controller
     {
         $this->authorize('create', User::class);
 
+
         return view('admin.users.create', [
             'user' => new User
         ]);

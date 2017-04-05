@@ -45,6 +45,17 @@ mix
         'public/js/admin/posts/categories.js')
     .babel([admin_helper, 'resources/assets/js/admin/posts/tags.js'],
         'public/js/admin/posts/tags.js')
+    .babel([
+            admin_helper,
+            'resources/assets/js/admin/resources/select-image.js',
+            'resources/assets/js/admin/resources/image-attributes.js',
+            'resources/assets/js/admin/posts/form-tags.js',
+            'resources/assets/js/admin/posts/create.js'
+        ],
+        'public/js/admin/posts/form.js'
+    )
+    .babel([admin_helper, 'resources/assets/js/admin/posts/index.js'],
+        'public/js/admin/posts/index.js')
 
     // autoload
     .autoload({});

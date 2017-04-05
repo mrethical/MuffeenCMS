@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" />
 @append
 
-<?php (!isset($image)) { $image = ['x' => '', 'y' => '', 'width' => '', 'height' => '']}?>
+<?php if (!isset($image)) { $image = ['x' => '', 'y' => '', 'width' => '', 'height' => '']; } ?>
 
 <input type="hidden" name="image-x" id="image-x" value="{{ old('image-x', $image['x']) }}">
 <input type="hidden" name="image-y" id="image-y" value="{{ old('image-y', $image['y']) }}">

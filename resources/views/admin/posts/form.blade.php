@@ -17,7 +17,7 @@
                     <option value="">Uncategorized</option>
                     @foreach( $categories as $category )
                         <option value="{{ $category->id }}"
-                                {{ (old('category', $post->$category_id) === $category->id) ? 'selected' : '' }}
+                                {{ (old('category', $post->category_id) == $category->id) ? 'selected' : '' }}
                         >{{ $category->name }}</option>
                     @endforeach
                 </select>
@@ -31,7 +31,7 @@
                     @if(isset($resources))
                         @foreach($resources as $resource)
                             @if(((old('image')) ? intval(old('image')) : intval($post->resource_id)) === $resource->id)
-                                {{ "value=\"" . $locations['upload'] . "/" . $resource->name . "\"" }}
+                                <?= 'value="' . $locations['upload'] . '/' . $resource->name . '"' ?>
                                     @endif
                                 @endforeach
                             @endif
@@ -40,8 +40,15 @@
                            value="{{ (old('image')) ? intval(old('image')) : $post->resource_id }}">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-image"
-                                data-input="#image" data-input-name="#image-name">
+                                data-input="#image" data-input-name="#image-name"
+                                style="border-radius: 0; border-left: none;" >
                             <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default image-attributes" type="button" data-toggle="modal"
+                                data-input="#image-name">
+                            <i class="fa fa-arrows-alt"></i>
                         </button>
                     </span>
                 </div>
@@ -63,8 +70,8 @@
                                 <input type="hidden" class="tag" name="tags[]" id="tag-{{ $index }}" value="{{ $tag }}" />
                             @endforeach
                         @else
-                            @if(isset($tags))
-                                @foreach($tags as $index=>$tag)
+                            @if(isset($post->tags))
+                                @foreach($post->tags as $index=>$tag)
                                     <input type="hidden" class="tag" name="tags[]" id="tag-{{ $index }}" value="{{ $tag->name }}" />
                                 @endforeach
                             @endif
@@ -79,18 +86,21 @@
         <input type="submit" class="btn btn-flat btn-primary" value="Submit">
     </div>
 
+    @include('admin.resources.select-image')
+    @include('admin.resources.image-attributes')
+
 </form>
 
-@include('admin.resources.select-image')
-
 @section('styles')
+    <link rel="stylesheet" href="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.css') }}">
     <link rel="stylesheet" href="{{ mix('/css/admin/tinymce-custom.css') }}">
     <link rel="stylesheet" href="{{ mix('/css/admin/posts/form-tags.css') }}">
 @append
 
 @section('scripts')
+    <script src="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
     <script src="{{ mix('/js/admin/init-tinymce.js') }}"></script>
-    <script src="{{ mix('/js/admin/posts/form-tags.js') }}"></script>
+    <script src="{{ mix('/js/admin/posts/form.js') }}"></script>
 @append
