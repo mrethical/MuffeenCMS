@@ -54,8 +54,7 @@ mix
             admin_helper,
             'resources/assets/js/admin/resources/select-image.js',
             'resources/assets/js/admin/resources/image-attributes.js',
-            'resources/assets/js/admin/posts/form-tags.js',
-            'resources/assets/js/admin/posts/create.js'
+            'resources/assets/js/admin/posts/form-tags.js'
         ],
         'public/js/admin/posts/form.js'
     )
