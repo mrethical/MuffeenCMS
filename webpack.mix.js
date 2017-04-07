@@ -60,6 +60,14 @@ mix
     )
     .babel([admin_helper, 'resources/assets/js/admin/posts/index.js'],
         'public/js/admin/posts/index.js')
+    .babel([
+            admin_helper,
+            'resources/assets/js/admin/resources/select-image.js'
+        ],
+        'public/js/admin/pages/form.js'
+    )
+    .babel([admin_helper, 'resources/assets/js/admin/pages/index.js'],
+        'public/js/admin/pages/index.js')
 
     // custom scripts
 

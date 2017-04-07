@@ -49,4 +49,9 @@ Route::group(['middleware' => 'auth'], function() {
         'show'
     ]]);
 
+    // Posts
+    Route::resource('admin/pages', 'Admin\PagesController', ['except' => [
+        'show'
+    ]]);
+
 });
