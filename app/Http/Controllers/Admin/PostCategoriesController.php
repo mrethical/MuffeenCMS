@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\PostCategoryRequest;
 use App\Models\PostCategory;
 use App\Repositories\PostCategories;
 use Illuminate\Http\Request;
@@ -37,32 +38,22 @@ class PostCategoriesController extends Controller
         return response()->json(PostCategories::getPossibleParent(request('id', 0)));
     }
 
-    public function store(Request $request)
+    public function store(PostCategoryRequest $request)
     {
-        $this->authorize('create', PostCategory::class);
-
-        $this->validate($request, [
-            'name' => 'required|unique:posts_categories|max:255',
-        ]);
-
         PostCategory::create([
             'name' => $request->name,
-            'parent_id' => ($request->parent) ? $request->parent : null
+            'parent_id' => ($request->parent) ? $request->parent : null,
+            'slug' => $request->slug
         ]);
 
         return response()->json(['success' => 'success']);
     }
 
-    public function update(Request $request, PostCategory $category)
+    public function update(PostCategoryRequest $request, PostCategory $category)
     {
-        $this->authorize('update', $category);
-
-        $this->validate($request, [
-            'name' => 'required|unique:posts_categories,name,'.$category->id.'|max:255',
-        ]);
-
         $category->name = $request->name;
         $category->parent_id = ($request->parent) ? $request->parent : null;
+        $category->slug = $request->slug;
         $category->update();
 
         return response()->json(['success' => 'success']);

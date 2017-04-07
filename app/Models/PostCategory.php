@@ -9,7 +9,7 @@ class PostCategory extends Model
     protected $table = 'posts_categories';
 
     protected $fillable = [
-        'name', 'parent_id'
+        'name', 'parent_id', 'slug'
     ];
 
     public function parent()

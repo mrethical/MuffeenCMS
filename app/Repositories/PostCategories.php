@@ -9,13 +9,14 @@ class PostCategories
 
     public static function getAllByName()
     {
-        return PostCategory::orderBy('name')
+        return PostCategory::select('id', 'name')
+            ->orderBy('name')
             ->get();
     }
 
     public static function getAllWithLimit($limit, $offset = 0)
     {
-        return PostCategory::select(['id', 'name', 'parent_id'])
+        return PostCategory::select(['id', 'name', 'parent_id', 'slug'])
             ->with(array('parent' => function($query){
                 $query->select('id','name');
             }))
@@ -42,7 +43,9 @@ class PostCategories
 
     public static function getPossibleParent($id)
     {
-        return PostCategory::whereNotIn('id', self::getFamily($id))->get();
+        return PostCategory::select('id', 'name')
+            ->whereNotIn('id', self::getFamily($id))
+            ->get();
     }
 
 }

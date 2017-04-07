@@ -83,14 +83,19 @@
                     <h4 class="modal-title" id="modal-category-label"></h4>
                 </div>
                 <div id="modal-category-body" class="modal-body">
-                    <form>
+                    <form id="modal-category-form">
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="parent">Parent:</label>
                             <select class="form-control" id="parent" name="parent"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug URL: </label> <span>({{ url('/categories')  }}/)</span>
+                            <input type="text" class="form-control" id="slug" name="slug"
+                                   data-related="#name" required>
                         </div>
                     </form>
                 </div>

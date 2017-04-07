@@ -41,8 +41,13 @@ mix
         'public/js/admin/resources/create.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/index.js'],
         'public/js/admin/resources/index.js')
-    .babel([admin_helper, 'resources/assets/js/admin/posts/categories.js'],
-        'public/js/admin/posts/categories.js')
+    .babel([
+            admin_helper,
+            'resources/assets/js/admin/posts/categories.js',
+            'resources/assets/js/admin/slug.js'
+        ],
+        'public/js/admin/posts/categories.js'
+    )
     .babel([admin_helper, 'resources/assets/js/admin/posts/tags.js'],
         'public/js/admin/posts/tags.js')
     .babel([

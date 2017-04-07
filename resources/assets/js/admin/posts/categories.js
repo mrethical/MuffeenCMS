@@ -7,8 +7,8 @@ function generateRow(row_data) {
             <td>${ (row_data.parent) ? row_data.parent.name : '' }</td>
             <td>
                 <button type="button" class="btn btn-default btn-xs" data-action="Edit"
-                    data-toggle="modal" data-target="#modal-category"
-                    data-id="${row_data.id}" data-name="${row_data.name}" data-parent="${row_data.parent_id}">
+                    data-toggle="modal" data-target="#modal-category" data-id="${row_data.id}" 
+                    data-name="${row_data.name}" data-parent="${row_data.parent_id}" data-slug="${row_data.slug}">
                     Edit
                 </button>
                 <button type="button" class="btn btn-default btn-xs" data-action="Delete"
@@ -88,9 +88,11 @@ $(document).ready(() => {
         $('#modal-category-label').text(action + ' Category');
         if (action === 'Add New') {
             refreshParentCategories();
+            makeSlug($('#slug'));
             submit.click(() => {
                 submit.empty().append($('<i class="fa fa-spin fa-fw fa-spinner"></i>'));
-                let data = `_token=${$('#_token').val()}&name=${$('#name').val()}&parent=${$('#parent').val()}`;
+                let data = $('#modal-category-form').serialize();
+                data += `&_token=${$('#_token').val()}`;
                 $.post( server_url + '/admin/posts/categories', data)
                     .done(() =>{
                         refreshTable(1, 10);
@@ -110,10 +112,11 @@ $(document).ready(() => {
             refreshParentCategories(id, () => {
                 $('#parent').val(button.data('parent'));
             });
+            $('#slug').val(button.data('slug'));
             submit.click(() => {
                 submit.empty().append($('<i class="fa fa-spin fa-fw fa-spinner"></i>'));
-                let data = `_token=${$('#_token').val()}&_method=PATCH` +
-                    `&name=${$('#name').val()}&parent=${$('#parent').val()}`;
+                let data = $('#modal-category-form').serialize();
+                data += `&_token=${$('#_token').val()}&_method=PATCH`;
                 $.post( server_url + '/admin/posts/categories/' + id, data)
                     .done(() =>{
                         refreshTable(1, 10);
@@ -133,7 +136,8 @@ $(document).ready(() => {
         }, 500);
     }).on('hide.bs.modal', () => {
         removeValidationAlerts();
-        $('#name').val('');
+        $('#name').val('').unbind('input');
+        $('#slug').val('').unbind('input');
         $('#modal-category-submit').empty().append("Submit").unbind('click');
     });
 
