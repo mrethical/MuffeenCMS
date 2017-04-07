@@ -19,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\PostCategory' => 'App\Policies\PostCategoryPolicy',
         'App\Models\Post' => 'App\Policies\PostPolicy',
         'App\Models\PostTag' => 'App\Policies\PostTagPolicy',
-        'App\Models\Page' => 'App\Policies\PagePolicy'
+        'App\Models\Page' => 'App\Policies\PagePolicy',
+        'App\Models\MenuGroup' => 'App\Policies\MenuPolicy'
     ];
 
     /**

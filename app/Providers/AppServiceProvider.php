@@ -22,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('uploads_small_url', \App\Services\Uploads::getUploadUrls()['upload_images_small']);
             $view->with('uploads_url', \App\Services\Uploads::getUploadUrls()['upload']);
         });
+        View::composer('_layouts.admin-sidebar', function($view) {
+            $view->with('menus', \App\Models\MenuGroup::all());
+        });
     }
 
     /**

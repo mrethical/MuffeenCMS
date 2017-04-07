@@ -1,0 +1,43 @@
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+.menu li span {
+    text-overflow: ellipsis;
+    width: 75%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.menu .placeholder {
+    position: relative;
+}
+
+.menu .placeholder:before {
+    position: absolute;
+}
+
+.sub-menu {
+    list-style: none;
+}
+
+.sub-menu li {
+    margin: 10px 0 0 0;
+}
+
+@media (max-width: 767px) {
+    .input-group {
+        width: 100%;
+    }
+    label span.visible-xs {
+        font-weight: normal;
+        display: inline-block !important;
+    }
+}

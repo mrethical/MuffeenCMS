@@ -54,4 +54,8 @@ Route::group(['middleware' => 'auth'], function() {
         'show'
     ]]);
 
+    // Menus
+    Route::get('admin/menus/{menu}/edit', 'Admin\MenusController@edit');
+    Route::patch('admin/menus/{menu}', 'Admin\MenusController@update');
+
 });

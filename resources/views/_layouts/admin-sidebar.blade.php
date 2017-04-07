@@ -55,6 +55,23 @@ if (!isset($active)) {
                     </li>
                 </ul>
             </li>
+            @if (!$menus->isEmpty())
+                <li class="treeview {{ ($active[0] == 'Menus') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class="fa fa-bars"></i> <span>Menus</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu menu-open">
+                        @foreach($menus as $menu)
+                            <li class="{{ ($active[1] == $menu->name) ? 'active' : '' }}">
+                                <a href="{{ url('/admin/menus/'.$menu->id) }}">{{ $menu->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
             <li class="treeview {{ ($active[0] == 'Resources') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-file"></i> <span>Resources</span>
