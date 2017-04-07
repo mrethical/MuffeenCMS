@@ -81,6 +81,13 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label class="control-label" for="slug">Slug URL: </label> <span>({{ url('/posts')  }}/)</span>
+                <input class="form-control slug" type="text" name="slug" id="slug" data-related="#title"
+                       value="{{ old('slug', $post->slug) }}" required>
+            </div>
+        </div>
     </div>
     <div class="box-footer">
         <input type="submit" class="btn btn-flat btn-primary" value="Submit">

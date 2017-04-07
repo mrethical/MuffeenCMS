@@ -54,7 +54,8 @@ class PostsController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:posts|max:255',
-            'content' => 'required'
+            'content' => 'required',
+            'slug' => 'required|unique:posts|max:255'
         ]);
 
         $post = Post::create([
@@ -68,7 +69,7 @@ class PostsController extends Controller
                 'height' =>$request->input('image-height')
             ]),
             'content' => $request->input('content'),
-            'slug' => str_slug($request->title),
+            'slug' => $request->slug,
             'author' => auth()->user()->id
         ]);
 
@@ -104,7 +105,8 @@ class PostsController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:posts,title,'.$post->id.'|max:255',
-            'content' => 'required'
+            'content' => 'required',
+            'slug' => 'required|unique:posts,slug,'.$post->id.'|max:255'
         ]);
 
         $post->title = $request->title;
@@ -117,7 +119,7 @@ class PostsController extends Controller
             'height' =>$request->input('image-height')
         ]);
         $post->content = $request->input('content');
-        $post->slug = str_slug($request->title);
+        $post->slug = $request->slug;
         $post->update();
 
         $post->tags()->detach();

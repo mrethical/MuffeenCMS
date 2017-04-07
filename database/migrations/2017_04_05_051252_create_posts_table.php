@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('resource_id')->nullable();
             $table->string('resource_attributes');
             $table->text('content');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->unsignedInteger('author');
             $table->timestamps();
         });

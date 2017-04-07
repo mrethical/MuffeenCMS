@@ -62,5 +62,10 @@ mix
     .babel([admin_helper, 'resources/assets/js/admin/posts/index.js'],
         'public/js/admin/posts/index.js')
 
+    // custom scripts
+
+    .babel('resources/assets/js/admin/slug.js',
+        'public/js/admin/slug.js')
+
     // autoload
     .autoload({});

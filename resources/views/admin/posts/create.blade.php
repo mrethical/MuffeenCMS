@@ -46,3 +46,7 @@
     </section>
 
 @stop
+
+@section('scripts')
+    <script src="{{ mix('/js/admin/slug.js') }}"></script>
+@append
