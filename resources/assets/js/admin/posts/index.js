@@ -5,7 +5,7 @@ function generateRow(row_data) {
         <tr>
             <td>${row_data.title}</td>
             <td>${row_data.author.name}</td>
-            <td>${row_data.category.name}</td>
+            <td>${ (row_data.category_id) ? row_data.category.name : '' }</td>
             <td>${timestamp(row_data.created_at)}</td>
             <td> 
                 <a class="btn btn-default btn-xs" href="${server_url}/admin/posts/${row_data.id}/edit">Edit</a>
