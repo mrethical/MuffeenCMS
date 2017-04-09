@@ -8,7 +8,7 @@ class Post extends Model
 {
     protected $fillable = ['title', 'category_id', 'resource_id', 'resource_attributes', 'content', 'slug', 'author'];
 
-    public function author()
+    public function user()
     {
         return $this->belongsTo('App\Models\User', 'author');
     }
@@ -21,5 +21,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\PostTag', 'posts_tags_relation', 'post_id', 'tag_id');
+    }
+
+    public function resource()
+    {
+        return $this->belongsTo('App\Models\Resource');
     }
 }

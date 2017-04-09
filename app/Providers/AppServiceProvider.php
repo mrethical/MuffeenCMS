@@ -25,6 +25,15 @@ class AppServiceProvider extends ServiceProvider
         View::composer('_layouts.admin-sidebar', function($view) {
             $view->with('menus', \App\Models\MenuGroup::all());
         });
+        View::composer('_layouts.public', function($view) {
+            $view->with('menus', \App\Repositories\Menus::getRootByGroupID(1));
+        });
+        View::composer('posts.aside', function($view) {
+            $view->with('uploads_small_url', \App\Services\Uploads::getUploadUrls()['upload_images_small']);
+            $view->with('categories', \App\Repositories\PostCategories::getAllByName());
+            $view->with('recent_posts', \App\Repositories\Posts::getMostRecent(3));
+            $view->with('tags', \App\Repositories\PostTags::getAllByName());
+        });
     }
 
     /**

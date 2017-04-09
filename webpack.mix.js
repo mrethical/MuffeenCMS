@@ -28,7 +28,14 @@ mix
     .babel('resources/assets/js/admin/init-tinymce-minimal.js', 'public/js/admin/init-tinymce-minimal.js')
 
     // public styles
-    .babel('resources/assets/css/style.css', 'public/css/style.css')
+    .styles('resources/assets/css/style.css', 'public/css/style.css')
+    .styles('resources/assets/css/posts/aside.css', 'public/css/posts/aside.css')
+    .styles('resources/assets/css/posts/list.css', 'public/css/posts/list.css')
+    .styles('resources/assets/css/posts/index.css', 'public/css/posts/index.css')
+
+    // public scripts
+    .babel('resources/assets/js/posts/list.js', 'public/js/posts/list.js')
+    .babel('resources/assets/js/posts/index.js', 'public/js/posts/index.js')
 
     // admin styles
     .babel('resources/assets/css/admin/style.css', 'public/css/admin/style.css')

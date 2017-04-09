@@ -1,0 +1,52 @@
+
+
+/* GENERAL */
+.posts-aside ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* CATEGORIES */
+#aside-categories a {
+    margin-left: 5px;
+}
+
+/* RECENT BLOGS */
+#aside-blogs p {
+    font-size: 13px;
+}
+#aside-blogs p.blog-label {
+    margin-bottom: 2px;
+}
+#aside-blogs li {
+    overflow: overlay;
+    padding-top: 10px;
+}
+#aside-blogs li div {
+    margin-bottom: 0px;
+}
+.blog-image-container {
+    padding: 0;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+.blog-image-container img {
+    max-height: 100%;
+}
+.blog-image-container li {
+    overflow: overlay;
+}
+#aside-blogs .blog-image-none {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* TAGS */
+#aside-tags li {
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    display: inline-block;
+    padding: 0 5px;
+    margin: 3px 0;
+}

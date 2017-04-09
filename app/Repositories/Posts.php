@@ -14,7 +14,7 @@ class Posts
                 'category' => function($query){
                     $query->select('id','name');
                 },
-                'author' => function($query) {
+                'user' => function($query) {
                     $query->select('id', 'name');
                 }
             ])
@@ -22,7 +22,14 @@ class Posts
             ->take($limit)
             ->offset($offset)
             ->get();
+    }
 
+    public static function getMostRecent($limit, $offset = 0)
+    {
+        return Post::orderBy('created_at', 'desc')
+            ->take($limit)
+            ->offset($offset)
+            ->get();
     }
 
     public static function getCount()

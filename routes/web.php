@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@home');
 
 Auth::routes();
 
@@ -59,3 +57,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::patch('admin/menus/{menu}', 'Admin\MenusController@update');
 
 });
+
+Route::get('/posts', 'PagesController@posts');
+Route::get('/posts/{slug}', 'PagesController@post');
+

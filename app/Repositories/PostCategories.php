@@ -9,7 +9,7 @@ class PostCategories
 
     public static function getAllByName()
     {
-        return PostCategory::select('id', 'name')
+        return PostCategory::select('id', 'name', 'slug')
             ->orderBy('name')
             ->get();
     }

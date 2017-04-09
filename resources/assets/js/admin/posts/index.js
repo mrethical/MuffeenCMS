@@ -4,7 +4,7 @@ function generateRow(row_data) {
     let html = `
         <tr>
             <td>${row_data.title}</td>
-            <td>${row_data.author.name}</td>
+            <td>${row_data.user.name}</td>
             <td>${ (row_data.category_id) ? row_data.category.name : '' }</td>
             <td>${timestamp(row_data.created_at)}</td>
             <td> 

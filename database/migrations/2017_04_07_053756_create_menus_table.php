@@ -23,12 +23,12 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->unsignedSmallInteger('menu_group_id');
             $table->string('url');
+            $table->unsignedInteger('parent_id')->nullable();
             $table->timestamps();
         });
         Schema::create('menu_order', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('menu_id');
-            $table->unsignedInteger('parent_menu_id')->nullable();
             $table->smallInteger('order');
             $table->timestamps();
         });
@@ -39,12 +39,12 @@ class CreateMenusTable extends Migration
             $table->foreign('menu_group_id')
                 ->references('id')->on('menu_groups')
                 ->onDelete('cascade');
+            $table->foreign('parent_id')
+                ->references('id')->on('menus')
+                ->onDelete('set null');
         });
         Schema::table('menu_order', function (Blueprint $table) {
             $table->foreign('menu_id')
-                ->references('id')->on('menus')
-                ->onDelete('cascade');
-            $table->foreign('parent_menu_id')
                 ->references('id')->on('menus')
                 ->onDelete('cascade');
         });

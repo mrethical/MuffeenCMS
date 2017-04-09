@@ -9,12 +9,19 @@ class Menus
 
     public static function getByGroupID($group_id)
     {
-        return Menu::select(['id', 'name', 'url'])
+        return Menu::select(['id', 'name', 'url', 'parent_id'])
             ->with(array('order' => function($query){
-                $query->select('menu_id', 'parent_menu_id', 'order')
-                    ->orderBy('parent_menu_id', 'desc')
-                    ->orderBy('order', 'desc');
+                $query->select('menu_id', 'order');
             }))
+            ->where('menu_group_id', '=', $group_id)
+            ->get();
+    }
+
+    public static function getRootByGroupID($group_id)
+    {
+        return Menu::select(['id', 'name', 'url', 'parent_id'])
+            ->whereNull('parent_id')
+            ->where('menu_group_id', '=', $group_id)
             ->get();
     }
 

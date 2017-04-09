@@ -32,11 +32,11 @@ class MenusController extends Controller
             $child_menu = Menu::create([
                 'name' => $child->name,
                 'menu_group_id' => $menu->id,
-                'url' => $child->url
+                'url' => $child->url,
+                'parent_id' => ($parent) ? $parent->id : null
             ]);
             MenuOrder::create([
                 'menu_id' => $child_menu->id,
-                'parent_menu_id' => ($parent) ? $parent->id : null,
                 'order' => $index
             ]);
             $this->saveChildren($child->children, $child_menu, $menu);

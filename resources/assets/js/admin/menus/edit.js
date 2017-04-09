@@ -5,7 +5,7 @@ let sort_menu_stack = [];
 
 function getMenuChildrenHtml(id, name, url, children = []) {
     let html = `
-        <li id="menu-item-${id}"data-id="${id}" data-name="${name}" data-url="${url}">
+        <li id="menu-item-${id}" data-id="${id}" data-name="${name}" data-url="${url}">
             <span class="drag"><b>${name}</b></span>
             <div class="pull-right">
                 <button class="btn btn-default btn-flat btn-xs"
@@ -132,7 +132,7 @@ function prepareRetreivedData(data) {
     let no_parent_yet = [];
     let new_data = [[]];
     for(let i = 0; i < data.length; i++) {
-        if (data[i].order.parent_menu_id !== null) {
+        if (data[i].parent_id !== null) {
             let temp = searchAndAppendChildren(new_data, data[i]);
             if (temp === null) {
                 no_parent_yet.push(data[i]);
@@ -154,7 +154,7 @@ function prepareRetreivedData(data) {
 function searchAndAppendChildren(children, data) {
     let new_children = null;
     for(let i = 0; i < children[0].length; i++) {
-        if (children[0][i].id === data.order.parent_menu_id) {
+        if (children[0][i].id === data.parent_id) {
             children[0][i].children[0].splice(data.order.order, 0, {
                 id: data.id,
                 name: data.name,
