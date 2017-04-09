@@ -6,6 +6,9 @@ function generateRow(row_data) {
             <td>${row_data.title}</td>
             <td>${timestamp(row_data.created_at)}</td>
             <td> 
+                <button type="button" class="copy-link btn btn-default btn-xs"
+                    data-url="${server_url}/pages/${row_data.slug}">Copy URL
+                </button>
                 <a class="btn btn-default btn-xs" href="${server_url}/admin/pages/${row_data.id}/edit">Edit</a>
                 <button type="button" class="btn btn-default btn-xs" data-action="Delete"
                     data-toggle="modal" data-target="#modal-delete" data-id="${row_data.id}">Delete
@@ -53,6 +56,9 @@ function refreshTable(page, limit) {
         $('#table-body').empty().append(html);
         generatePagination(data.count, limit);
         $('.overlay').hide();
+        $('.copy-link').click(function() {
+            copyToClipboard($(this).data('url'));
+        });
     })
         .fail((response) => {
             redirectUnauthorized(response);

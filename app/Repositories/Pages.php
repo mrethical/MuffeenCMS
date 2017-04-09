@@ -9,7 +9,7 @@ class Pages
 
     public static function getAllWithLimit($limit, $offset = 0)
     {
-        return Page::select(['id', 'title', 'created_at'])
+        return Page::select(['id', 'title', 'slug', 'created_at'])
             ->orderBy('created_at', 'desc')
             ->take($limit)
             ->offset($offset)

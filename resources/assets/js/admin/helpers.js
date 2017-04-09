@@ -125,3 +125,24 @@ function redirectUnauthorized(response) {
 function showErrorToast() {
     toastError('An error has occurred. Please refresh the page.');
 }
+
+function copyToClipboard(text, success = 'Copy to clipboard successful.') {
+    if (window.clipboardData && window.clipboardData.setData) {
+        return clipboardData.setData('Text', text);
+    } else if (document.queryCommandSupported && document.queryCommandSupported('copy')) {
+        let textarea = document.createElement('textarea');
+        textarea.textContent = text;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            toastSuccess(success);
+        } catch (ex) {
+            toastError('Copy to clipboard failed.');
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
