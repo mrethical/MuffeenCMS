@@ -9,6 +9,10 @@ body.dragging, body.dragging * {
     z-index: 2000;
 }
 
+.menu li {
+    margin: 10px 0;
+}
+
 .menu li span {
     text-overflow: ellipsis;
     width: 75%;

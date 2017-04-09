@@ -32,13 +32,6 @@
 
     <section class="content">
 
-        @if($edited = request()->session()->get('edited', null))
-            <div class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <p>Post was updated successfully. <a href="{{ url('/admin/posts') }}">Back to List</a></p>
-            </div>
-        @endif
-
         <input type="hidden" id="id" value="{{ $menu->id }}">
         <input type="hidden" id="_token" value="{{ csrf_token() }}">
 
@@ -55,8 +48,8 @@
                     </div>
                     <div class="row box-body">
                         <div class="col-md-8">
+                            <p><b>Note: </b>Click <i>add item</i> to add a new item. Drag item/s to sort.</p>
                             <ul class="menu todo-list"></ul>
-                            <p class="help-block">* Drag items to sort.</p>
                         </div>
                     </div>
                     <div class="box-footer">

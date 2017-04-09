@@ -194,6 +194,7 @@ $(document).ready(() => {
         let submit = $('#modal-item-submit');
         $('#modal-item-label').text(action + ' Item');
         if (action === 'Add New') {
+            $('#url').val('#');
             submit.click(() => {
                 addItem($('#name').val(), $('#url').val());
                 $('#modal-item').modal('hide');
