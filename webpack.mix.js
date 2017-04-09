@@ -27,14 +27,17 @@ mix
     .babel('resources/assets/js/admin/init-tinymce.js', 'public/js/admin/init-tinymce.js')
     .babel('resources/assets/js/admin/init-tinymce-minimal.js', 'public/js/admin/init-tinymce-minimal.js')
 
-    // styles
+    // public styles
+    .babel('resources/assets/css/style.css', 'public/css/style.css')
+
+    // admin styles
     .babel('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
     .babel('resources/assets/css/admin/resources/create.css', 'public/css/admin/resources/create.css')
     .babel('resources/assets/css/admin/resources/index.css', 'public/css/admin/resources/index.css')
     .babel('resources/assets/css/admin/posts/form-tags.css', 'public/css/admin/posts/form-tags.css')
     .babel('resources/assets/css/admin/menus/edit.css', 'public/css/admin/menus/edit.css')
 
-    // scripts
+    // admin scripts
     .babel('resources/assets/js/admin/users/index.js', 'public/js/admin/users/index.js')
     .babel([admin_helper, 'resources/assets/js/admin/resources/categories.js'],
         'public/js/admin/resources/categories.js')
@@ -72,8 +75,7 @@ mix
     .babel([admin_helper, 'resources/assets/js/admin/menus/edit.js'],
         'public/js/admin/menus/edit.js')
 
-    // custom scripts
-
+    // admin custom scripts
     .babel('resources/assets/js/admin/slug.js',
         'public/js/admin/slug.js')
 
