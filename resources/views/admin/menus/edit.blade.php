@@ -76,13 +76,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control item-edit" id="name" required>
                     </div>
                     <div class="form-group">
                         <label for="name">URL: <span class="visible-xs">( {{ url('/') }}/...)</span></label>
                         <div class="input-group">
                             <div class="input-group-addon hidden-xs">{{ url('/') }}/</div>
-                            <input type="text" class="form-control" id="url" required>
+                            <input type="text" class="form-control item-edit" id="url" required>
                         </div>
                     </div>
                 </div>

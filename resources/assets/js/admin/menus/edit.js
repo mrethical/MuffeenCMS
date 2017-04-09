@@ -218,8 +218,8 @@ $(document).ready(() => {
         $('#modal-item-submit').unbind('click');
     });
 
-    $('#name').on('input', function() {
-        if ($(this).val().length === 0) {
+    $('.item-edit').on('input', function() {
+        if ($('#name').val().length === 0) {
             $('#modal-item-submit').prop('disabled', true);
         } else {
             $('#modal-item-submit').prop('disabled', false);
