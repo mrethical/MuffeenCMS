@@ -32,4 +32,12 @@ class PagesController extends Controller
         return view('posts.index', compact('post', 'uploads_url', 'title'));
     }
 
+    public function page($slug)
+    {
+        $page = \App\Models\Page::where('slug', '=', $slug)->first();
+        $title = $page->title . ' | ' . config('app.name');
+
+        return view('pages.index', compact('page','title'));
+    }
+
 }

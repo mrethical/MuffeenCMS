@@ -61,5 +61,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/posts', 'PagesController@posts');
 Route::get('/posts/{slug}', 'PagesController@post');
 
+Route::get('/pages/{slug}', 'PagesController@page');
+
 Route::get('/feed', 'FeedController@index');
 
