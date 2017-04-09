@@ -61,6 +61,11 @@
                             </li>
                         @endif
                     @endforeach
+                    @if(auth()->user())
+                        <li><a href="{{ url('/admin') }}" class="logo">{{ auth()->user()->name }}</a></li>
+                    @else
+                        <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                    @endif
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

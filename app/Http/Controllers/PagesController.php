@@ -9,6 +9,14 @@ class PagesController extends Controller
         return view('home');
     }
 
+    public function page($slug)
+    {
+        $page = \App\Models\Page::where('slug', '=', $slug)->first();
+        $title = $page->title . ' | ' . config('app.name');
+
+        return view('pages.index', compact('page','title'));
+    }
+
     public function posts()
     {
         $page = request('page', 1);
@@ -32,12 +40,29 @@ class PagesController extends Controller
         return view('posts.index', compact('post', 'uploads_url', 'title'));
     }
 
-    public function page($slug)
+    public function categories($slug)
     {
-        $page = \App\Models\Page::where('slug', '=', $slug)->first();
-        $title = $page->title . ' | ' . config('app.name');
-
-        return view('pages.index', compact('page','title'));
+        if ($slug == 'uncategorized') {
+            $category = new \stdClass;
+            $category->id = null;
+            $category->name = 'Uncategorized';
+        } else {
+            $category = \App\Models\PostCategory::where('slug', '=', $slug)->first();
+        }
+        if ($category) {
+            $page = request('page', 1);
+            if (!is_numeric($page)) {
+                $page = 1;
+            }
+            $posts = \App\Repositories\Posts::getMostRecentByCategory($category->id, 10, ($page-1)*10);
+            $count = \App\Repositories\Posts::getCountByCategory($category->id);
+            $title = $category->name . ' - Blog Categories | ' . config('app.name');
+            $header = $category->name;
+            $page_url = '/categories/' . $category->name;
+            return view('posts.list', compact(
+                'page', 'posts', 'count', 'title', 'header', 'page_url'
+            ));
+        }
     }
 
 }

@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-xs-6">
                                         <p class="blog-info-header">Posted Under: </p>
-                                        <p>{{ ($post->category) ? $post->category->name : 'uncategorized' }}</p>
+                                        <p>{{ ($post->category) ? $post->category->name : 'Uncategorized' }}</p>
                                     </div>
                                 </div>
                         </li>

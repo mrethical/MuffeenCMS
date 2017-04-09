@@ -37,4 +37,19 @@ class Posts
         return Post::count();
     }
 
+    public static function getMostRecentByCategory($category_id, $limit, $offset = 0)
+    {
+        return Post::where('category_id', '=', $category_id)
+            ->orderBy('created_at', 'desc')
+            ->take($limit)
+            ->offset($offset)
+            ->get();
+    }
+
+    public static function getCountByCategory($category_id)
+    {
+        return Post::where('category_id', '=', $category_id)
+            ->count();
+    }
+
 }
