@@ -66,7 +66,7 @@ if (!isset($active)) {
                     <ul class="treeview-menu menu-open">
                         @foreach($menus as $menu)
                             <li class="{{ ($active[1] == $menu->name) ? 'active' : '' }}">
-                                <a href="{{ url('/admin/menus/'.$menu->id) }}">{{ $menu->name }}</a>
+                                <a href="{{ url('/admin/menus/'.$menu->id.'/edit') }}">{{ $menu->name }}</a>
                             </li>
                         @endforeach
                     </ul>
