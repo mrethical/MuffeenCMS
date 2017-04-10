@@ -40,6 +40,13 @@ class PostCategoriesController extends Controller
 
     public function store(PostCategoryRequest $request)
     {
+        $this->authorize('create', PostCategory::class);
+
+        $this->validate($request, [
+            'name' => 'required|unique:posts_categories|max:255',
+            'slug' => 'required'
+        ]);
+
         PostCategory::create([
             'name' => $request->name,
             'parent_id' => ($request->parent) ? $request->parent : null,
@@ -51,6 +58,13 @@ class PostCategoriesController extends Controller
 
     public function update(PostCategoryRequest $request, PostCategory $category)
     {
+        $this->authorize('update', $category);
+
+        $this->validate($request, [
+            'name' => 'required|unique:posts_categories,name,'.$category->id.'|max:255',
+            'slug' => 'required'
+        ]);
+
         $category->name = $request->name;
         $category->parent_id = ($request->parent) ? $request->parent : null;
         $category->slug = $request->slug;
