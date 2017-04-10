@@ -32,6 +32,7 @@ mix
     .styles('resources/assets/css/posts/aside.css', 'public/css/posts/aside.css')
     .styles('resources/assets/css/posts/list.css', 'public/css/posts/list.css')
     .styles('resources/assets/css/posts/index.css', 'public/css/posts/index.css')
+    .styles('resources/assets/css/home.css', 'public/css/home.css')
 
     // public scripts
     .babel('resources/assets/js/posts/list.js', 'public/js/posts/list.js')

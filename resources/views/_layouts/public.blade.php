@@ -20,7 +20,7 @@
 
 <header>
 
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <h2 class="hidden">Main Navigation</h2>
         <div class="container">
             <div class="navbar-header">
@@ -70,6 +70,8 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+
+    @yield('header')
 
 </header>
 

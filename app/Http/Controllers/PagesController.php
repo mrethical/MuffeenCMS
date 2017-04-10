@@ -6,7 +6,10 @@ class PagesController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $posts = \App\Repositories\Posts::getMostRecent(3);
+        $title = config('app.name');
+
+        return view('home', compact('posts', 'title'));
     }
 
     public function contact()

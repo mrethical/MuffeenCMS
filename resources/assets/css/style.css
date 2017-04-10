@@ -4,6 +4,10 @@ body {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+header {
+    margin-bottom: 70px;
+}
+
 h1,
 h2,
 h3,
