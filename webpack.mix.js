@@ -60,8 +60,13 @@ mix
         ],
         'public/js/admin/posts/categories.js'
     )
-    .babel([admin_helper, 'resources/assets/js/admin/posts/tags.js'],
-        'public/js/admin/posts/tags.js')
+    .babel([
+            admin_helper,
+            'resources/assets/js/admin/posts/tags.js',
+            'resources/assets/js/admin/slug.js'
+        ],
+        'public/js/admin/posts/tags.js'
+    )
     .babel([
             admin_helper,
             'resources/assets/js/admin/resources/select-image.js',

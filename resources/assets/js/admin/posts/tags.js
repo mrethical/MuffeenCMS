@@ -7,7 +7,7 @@ function generateRow(row_data) {
             <td> 
                 <button type="button" class="btn btn-default btn-xs" data-action="Edit"
                     data-toggle="modal" data-target="#modal-tag"
-                    data-id="${row_data.id}" data-name="${row_data.name}">Edit</button>
+                    data-id="${row_data.id}" data-name="${row_data.name}" data-slug="${row_data.slug}">Edit</button>
                 <button type="button" class="btn btn-default btn-xs" data-action="Delete"
                     data-toggle="modal" data-target="#modal-delete" 
                     data-id="${row_data.id}">Delete</button>
@@ -67,9 +67,10 @@ $(document).ready(() => {
         let submit = $('#modal-tag-submit');
         $('#modal-tag-label').text(action + ' Tag');
         if (action === 'Add New') {
+            makeSlug($('#slug'));
             submit.click(() => {
                 submit.empty().append($('<i class="fa fa-spin fa-fw fa-spinner"></i>'));
-                let data = `_token=${$('#_token').val()}&name=${$('#name').val()}`;
+                let data = `_token=${$('#_token').val()}&name=${$('#name').val()}&slug=${$('#slug').val()}`;
                 $.post( server_url + '/admin/posts/tags', data)
                     .done(() =>{
                         refreshTable(1, 10);
@@ -86,10 +87,12 @@ $(document).ready(() => {
         } else if (action === 'Edit') {
             let id = button.data('id');
             let name = button.data('name');
+            let slug = button.data('slug');
             $('#name').val(name);
+            $('#slug').val(slug);
             submit.click(() => {
                 submit.empty().append($('<i class="fa fa-spin fa-fw fa-spinner"></i>'));
-                let data = `_token=${$('#_token').val()}&_method=PATCH&name=${$('#name').val()}`;
+                let data = `_token=${$('#_token').val()}&_method=PATCH&name=${$('#name').val()}&slug=${$('#slug').val()}`;
                 $.post( server_url + '/admin/posts/tags/' + id, data)
                     .done(() =>{
                         refreshTable(1, 10);
@@ -109,7 +112,8 @@ $(document).ready(() => {
         }, 500);
     }).on('hide.bs.modal', () => {
         removeValidationAlerts();
-        $('#name').val('');
+        $('#name').val('').unbind('input');
+        $('#slug').val('').unbind('input');
         $('#modal-tag-submit').empty().append("Submit").unbind('click');
     });
 

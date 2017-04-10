@@ -15,7 +15,8 @@ class PostTags
 
     public static function getAllWithLimit($limit, $offset = 0)
     {
-        return PostTag::select(['id', 'name'])
+        return PostTag::select(['id', 'name', 'slug'])
+            ->orderBy('name')
             ->take($limit)
             ->offset($offset)
             ->get();

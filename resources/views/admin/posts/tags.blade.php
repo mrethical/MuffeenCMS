@@ -85,7 +85,12 @@
                     <form>
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug URL: </label> <span>({{ url('/tags')  }}/)</span>
+                            <input type="text" class="form-control" id="slug" name="slug"
+                                   data-related="#name" required>
                         </div>
                     </form>
                 </div>

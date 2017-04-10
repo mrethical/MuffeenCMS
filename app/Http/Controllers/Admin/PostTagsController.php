@@ -44,10 +44,12 @@ class PostTagsController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:posts_tags|max:255',
+            'slug' => 'required'
         ]);
 
         PostTag::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => $request->slug
         ]);
 
         return response()->json(['success' => 'success']);
@@ -59,9 +61,11 @@ class PostTagsController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:posts_tags,name,'.$tag->id.'|max:255',
+            'slug' => 'required'
         ]);
 
         $tag->name = $request->name;
+        $tag->slug = $request->slug;
         $tag->update();
 
         return response()->json(['success' => 'success']);
