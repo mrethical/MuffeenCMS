@@ -59,6 +59,12 @@ function timestamp(timestamp)
     else return miliseconds.format("mm/dd/yyyy");
 }
 
+function date(timestamp)
+{
+    let miliseconds = new Date(timestamp.replace(' ', 'T')).getTime();
+    return moment(miliseconds).format("MM/DD/YYYY");
+}
+
 /*
  *  Bits Formatter
  *

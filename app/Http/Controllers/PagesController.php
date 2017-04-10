@@ -9,6 +9,33 @@ class PagesController extends Controller
         return view('home');
     }
 
+    public function contact()
+    {
+        $title = 'Contact Us | ' . config('app.name');
+
+        return view('contact', compact('title'));
+    }
+
+    public function contact_submit()
+    {
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $inquiry = \App\Models\Inquiry::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'subject' => request('subject'),
+            'message' => request('message')
+        ]);
+
+        request()->session()->flash('saved', $inquiry->id);
+        return redirect(url('/contact'));
+    }
+
     public function page($slug)
     {
         $page = \App\Models\Page::where('slug', '=', $slug)->first();

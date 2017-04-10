@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PagesController@home');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@contact_submit');
 
 Auth::routes();
 
@@ -55,6 +57,10 @@ Route::group(['middleware' => 'auth'], function() {
     // Menus
     Route::get('admin/menus/{menu}/edit', 'Admin\MenusController@edit');
     Route::patch('admin/menus/{menu}', 'Admin\MenusController@update');
+
+    // Inquiries
+    Route::get('admin/inquiries/', 'Admin\InquiriesController@index');
+    Route::delete('admin/inquiries/{inquiry}', 'Admin\InquiriesController@destroy');
 
 });
 

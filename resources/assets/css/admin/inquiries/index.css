@@ -1,0 +1,13 @@
+
+.inquiry-label {
+    font-style: italic;
+    width: 50px !important;
+    display: inline-block;
+    margin-right: 10px;
+}
+#message {
+    display: inline-block;
+    margin: 5px 20px;
+    text-indent: 50px;
+    text-align: justify;
+}

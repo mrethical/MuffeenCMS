@@ -43,6 +43,7 @@ mix
     .babel('resources/assets/css/admin/resources/index.css', 'public/css/admin/resources/index.css')
     .babel('resources/assets/css/admin/posts/form-tags.css', 'public/css/admin/posts/form-tags.css')
     .babel('resources/assets/css/admin/menus/edit.css', 'public/css/admin/menus/edit.css')
+    .babel('resources/assets/css/admin/inquiries/index.css', 'public/css/admin/inquiries/index.css')
 
     // admin scripts
     .babel('resources/assets/js/admin/users/index.js', 'public/js/admin/users/index.js')
@@ -81,6 +82,8 @@ mix
         'public/js/admin/pages/index.js')
     .babel([admin_helper, 'resources/assets/js/admin/menus/edit.js'],
         'public/js/admin/menus/edit.js')
+    .babel([admin_helper, 'resources/assets/js/admin/inquiries/index.js'],
+        'public/js/admin/inquiries/index.js')
 
     // admin custom scripts
     .babel('resources/assets/js/admin/slug.js',

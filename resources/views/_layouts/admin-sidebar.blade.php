@@ -17,6 +17,9 @@ if (!isset($active)) {
             <li class="{{ ($active[0] == 'Dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
             </li>
+            <li class="{{ ($active[0] == 'Inquiries') ? 'active' : '' }}">
+                <a href="{{ url('/admin/inquiries') }}"><i class="fa fa-envelope"></i> <span>Inquiries</span></a>
+            </li>
             <li class="treeview {{ ($active[0] == 'Posts') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-thumb-tack"></i> <span>Posts</span>
