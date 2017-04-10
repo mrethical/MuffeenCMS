@@ -92,4 +92,23 @@ class PagesController extends Controller
         }
     }
 
+    public function tags($slug)
+    {
+        $tag = \App\Models\PostTag::where('slug', '=', $slug)->first();
+        if ($tag) {
+            $page = request('page', 1);
+            if (!is_numeric($page)) {
+                $page = 1;
+            }
+            $posts = \App\Repositories\Posts::getMostRecentByTag($tag->id, 10, ($page-1)*10);
+            $count = \App\Repositories\Posts::getCountByTag($tag->id);
+            $title = $tag->name . ' - Blog Tags | ' . config('app.name');
+            $header = $tag->name;
+            $page_url = '/tags/' . $tag->name;
+            return view('posts.list', compact(
+                'page', 'posts', 'count', 'title', 'header', 'page_url'
+            ));
+        }
+    }
+
 }

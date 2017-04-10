@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/posts', 'PagesController@posts');
 Route::get('/posts/{slug}', 'PagesController@post');
 Route::get('/categories/{slug}', 'PagesController@categories');
+Route::get('/tags/{slug}', 'PagesController@tags');
 
 Route::get('/pages/{slug}', 'PagesController@page');
 

@@ -52,4 +52,21 @@ class Posts
             ->count();
     }
 
+    public static function getMostRecentByTag($tag_id, $limit, $offset = 0)
+    {
+        return Post::where('posts_tags_relation.tag_id', '=', $tag_id)
+            ->join('posts_tags_relation', 'posts.id', '=', 'posts_tags_relation.post_id')
+            ->orderBy('posts.created_at', 'desc')
+            ->take($limit)
+            ->offset($offset)
+            ->get();
+    }
+
+    public static function getCountByTag($tag_id)
+    {
+        return Post::where('posts_tags_relation.tag_id', '=', $tag_id)
+            ->join('posts_tags_relation', 'posts.id', '=', 'posts_tags_relation.post_id')
+            ->count();
+    }
+
 }
