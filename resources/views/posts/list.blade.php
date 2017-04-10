@@ -23,7 +23,7 @@
                             @else
                                 <div class="blog-image-none col-md-12">
                             @endif
-                                    <a href="{{ url('/' . $post->slug) }}">{{ $post->title }}</a>
+                                    <a href="{{ url('/posts/' . $post->slug) }}">{{ $post->title }}</a>
                                     <p class="blog-date">~ {{ date('F d, Y', strtotime($post->created_at)) }}</p>
                                     <p class="blog-content">{{ substr(preg_replace("/&#?[a-z0-9]{2,8};/i", "", strip_tags($post->content)), 0, 500) }} ... </p>
                                     <hr class="blog-divider">
