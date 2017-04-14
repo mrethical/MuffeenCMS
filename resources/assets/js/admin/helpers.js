@@ -56,7 +56,7 @@ function timestamp(timestamp)
     else if (difference < 7200) return '1 hour ago';
     else if (difference < 86400) return Math.floor(difference/3600) + ' hours ago';
     else if (difference < 172000) return 'Yesterday';
-    else return miliseconds.format("mm/dd/yyyy");
+    else return moment(miliseconds).format("MM/DD/YYYY");
 }
 
 function date(timestamp)

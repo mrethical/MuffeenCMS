@@ -105,6 +105,7 @@
 @section('scripts')
 
     <script src="{{ url('/vendor/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="{{ mix('vendor/jquery-simplePagination/jquery-simplePagination.js') }}"></script>
     <script src="{{ mix('js/admin/posts/index.js') }}"></script>
 
