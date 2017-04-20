@@ -1,40 +1,63 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## MuffeenCMS.
+A Laravel 5.4 based CMS boilerplate to get started on any kind of project.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## System Requirements
+Since MuffeenCMS is based on Laravel Framework, the same requirements also applies.
 
-## About Laravel
+* PHP >= 5.6.4
+  * OpenSSL PHP Extension
+  * PDO PHP Extension
+  * Mbstring PHP Extension
+  * Tokenizer PHP Extension
+  * XML PHP Extension
+* [Composer](https://getcomposer.org) installed to load the dependencies of Lavalite.
+* NodeJS with NPM
+  * Required to push and modify CSS an JS files since these files are compiled using Webpack.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Installation
+Please check the system requirements before installing MuffeenCMS.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. You may install by cloning from github.
+   `git clone https://github.com/muffeen/MuffeenCMS.git`
+2. On the project's root directory, run `composer update`
+3. Rename .env.example to .env and set your database configuration there.
+4. Run `php artisan key:generate`
+5. Run migrations with seed:
+   `php artisan migrate --seed`
+6. Setup your web server to point to the "public" folder.
+7. Run `npm install`
+8. Run `npm run production` to compiled and move css and js files to public directory 
+9. You can configure the site in the config folder before production.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+####Permissions
+MuffeenCMS may require one set of permissions to be configured to have write access by the web server.
+For more details on installation check laravel installation guide
+http://laravel.com/docs/5.4/installation
 
-## Learning Laravel
+You may also take a look at this
+http://stackoverflow.com/questions/30639174/file-permissions-for-laravel-5-and-others#answer-37266353
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+##Frameworks/Libraries
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+#### PHP Libraries
+* [laravel/laravel](https://github.com/laravel/laravel) - A PHP Framework For Web Artisans
+* [doctrine/dbal](https://github.com/doctrine/dbal) - Doctrine Database Abstraction Layer
+* [roumen/feed](https://github.com/RoumenDamianoff/laravel-feed) - A simple feed generator for Laravel
 
-## Contributing
+#### CSS and Javascript Libraries
+* [twbs/bootstrap](https://github.com/twbs/bootstrap) - The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web
+* [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome) - The iconic font and CSS toolkit
+* [driftyco/ionicons](https://github.com/driftyco/ionicons) - The premium icon font for Ionic
+* [almasaeed2010/AdminLTE](https://github.com/almasaeed2010/AdminLTE) - Free Premium Admin control Panel Theme Based On Bootstrap 3.x
+* [enyo/dropzone](https://github.com/enyo/dropzone) - An easy to use drag'n'drop library. It supports image previews and shows nice progress bars
+* [fengyuanchen/cropper](https://github.com/fengyuanchen/cropper) - A simple jQuery image cropping plugin
+* [rvera/image-picker](https://github.com/rvera/image-picker) - A simple jQuery plugin that transforms a select element into a more user friendly graphical interface
+* [kamranahmedse/jquery-toast-plugin](https://github.com/kamranahmedse/jquery-toast-plugin) - Highly customizable jquery plugin to show toast messages
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Contributing, Questions and Suggestions
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Thank you for considering contributing to MuffeenCMS! Please feel free to email me at jeff_magboo19@yahoo.com.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+MuffeenCMS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
