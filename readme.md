@@ -29,7 +29,7 @@ Please check the system requirements before installing MuffeenCMS.
 8. Run `npm run production` to compiled and move css and js files to public directory 
 9. You can configure the site in the config folder before production.
 
-#### Permissions
+### Permissions
 MuffeenCMS may require one set of permissions to be configured to have write access by the web server.
 For more details on installation check laravel installation guide
 http://laravel.com/docs/5.4/installation
@@ -37,14 +37,14 @@ http://laravel.com/docs/5.4/installation
 You may also take a look at this
 http://stackoverflow.com/questions/30639174/file-permissions-for-laravel-5-and-others#answer-37266353
 
-##Frameworks/Libraries
+## Frameworks/Libraries
 
-#### PHP Libraries
+### PHP Libraries
 * [laravel/laravel](https://github.com/laravel/laravel) - A PHP Framework For Web Artisans
 * [doctrine/dbal](https://github.com/doctrine/dbal) - Doctrine Database Abstraction Layer
 * [roumen/feed](https://github.com/RoumenDamianoff/laravel-feed) - A simple feed generator for Laravel
 
-#### CSS and Javascript Libraries
+### CSS and Javascript Libraries
 * [twbs/bootstrap](https://github.com/twbs/bootstrap) - The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web
 * [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome) - The iconic font and CSS toolkit
 * [driftyco/ionicons](https://github.com/driftyco/ionicons) - The premium icon font for Ionic
