@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Post;
+use DB;
 
 class Posts
 {
@@ -67,6 +68,13 @@ class Posts
         return Post::where('posts_tags_relation.tag_id', '=', $tag_id)
             ->join('posts_tags_relation', 'posts.id', '=', 'posts_tags_relation.post_id')
             ->count();
+    }
+
+    public static function getLatestOnLastThirtyDaysWithLimit($limit)
+    {
+       return Post::where(DB::raw("DATEDIFF(NOW(), 'created_at')", '<=', 30))
+            ->limit($limit)
+            ->get();
     }
 
 }

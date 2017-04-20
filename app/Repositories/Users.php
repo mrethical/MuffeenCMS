@@ -3,6 +3,7 @@
  namespace App\Repositories;
 
  use App\Models\User;
+ use DB;
 
  class Users
  {
@@ -34,6 +35,30 @@
                  ->count();
          } else {
              return 0;
+         }
+     }
+
+     public static function getCount()
+     {
+         if (auth()->user()->type == 'superadmin') {
+             return User::count();
+         } else {
+             return User::where('type', '!=' , 'superadmin')
+                 ->count();
+         }
+     }
+
+     public static function getLatestOnLastThirtyDaysWithLimit($limit)
+     {
+         if (auth()->user()->type == 'superadmin') {
+             return User::where(DB::raw("DATEDIFF(NOW(), 'created_at')", '<=', 30))
+                 ->limit($limit)
+                 ->get();
+         } else {
+             return User::where(DB::raw("DATEDIFF(NOW(), 'created_at')", '<=', 30))
+                 ->where('type', '!=' , 'superadmin')
+                 ->limit($limit)
+                 ->get();
          }
      }
 

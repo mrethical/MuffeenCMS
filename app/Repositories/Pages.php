@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Page;
+use DB;
 
 class Pages
 {
@@ -20,6 +21,13 @@ class Pages
     public static function getCount()
     {
         return Page::count();
+    }
+
+    public static function getLatestOnLastThirtyDaysWithLimit($limit)
+    {
+        return Page::where(DB::raw("DATEDIFF(NOW(), 'created_at')", '<=', 30))
+            ->limit($limit)
+            ->get();
     }
 
 }

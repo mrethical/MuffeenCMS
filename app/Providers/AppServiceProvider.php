@@ -43,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('_layouts.admin-sidebar', function($view) {
             $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
         });
+        View::composer('admin.dashboard', function($view) {
+            $view->with('uploads_small_url', \App\Services\Uploads::getUploadUrls()['upload_images_small']);
+            $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
+        });
     }
 
     /**
