@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "muffeen/MuffeenCMS",
+    "description": "A Laravel 5.4 based CMS boilerplate to get started on any kind of project.",
+    "keywords": ["laravel", "cms", "framework", "boilerplate", "php"],
     "license": "MIT",
     "type": "project",
     "require": {
