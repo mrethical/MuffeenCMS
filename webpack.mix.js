@@ -39,12 +39,12 @@ mix
     .babel('resources/assets/js/posts/index.js', 'public/js/posts/index.js')
 
     // admin styles
-    .babel('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
-    .babel('resources/assets/css/admin/resources/create.css', 'public/css/admin/resources/create.css')
-    .babel('resources/assets/css/admin/resources/index.css', 'public/css/admin/resources/index.css')
-    .babel('resources/assets/css/admin/posts/form-tags.css', 'public/css/admin/posts/form-tags.css')
-    .babel('resources/assets/css/admin/menus/edit.css', 'public/css/admin/menus/edit.css')
-    .babel('resources/assets/css/admin/inquiries/index.css', 'public/css/admin/inquiries/index.css')
+    .styles('resources/assets/css/admin/style.css', 'public/css/admin/style.css')
+    .styles('resources/assets/css/admin/resources/create.css', 'public/css/admin/resources/create.css')
+    .styles('resources/assets/css/admin/resources/index.css', 'public/css/admin/resources/index.css')
+    .styles('resources/assets/css/admin/posts/form-tags.css', 'public/css/admin/posts/form-tags.css')
+    .styles('resources/assets/css/admin/menus/edit.css', 'public/css/admin/menus/edit.css')
+    .styles('resources/assets/css/admin/inquiries/index.css', 'public/css/admin/inquiries/index.css')
 
     // admin scripts
     .babel('resources/assets/js/admin/users/index.js', 'public/js/admin/users/index.js')
