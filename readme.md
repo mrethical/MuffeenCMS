@@ -29,7 +29,7 @@ Please check the system requirements before installing MuffeenCMS.
 8. Run `npm run production` to compiled and move css and js files to public directory 
 9. You can configure the site in the config folder before production.
 
-####Permissions
+#### Permissions
 MuffeenCMS may require one set of permissions to be configured to have write access by the web server.
 For more details on installation check laravel installation guide
 http://laravel.com/docs/5.4/installation
