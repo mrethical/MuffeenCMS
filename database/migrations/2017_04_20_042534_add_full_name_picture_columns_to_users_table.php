@@ -28,6 +28,11 @@ class AddFullNamePictureColumnsToUsersTable extends Migration
      */
     public function down()
     {
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('first_name');
+            $table->dropColumn('last_name');
+            $table->dropColumn('middle_name');
+            $table->dropColumn('picture');
+        });
     }
 }

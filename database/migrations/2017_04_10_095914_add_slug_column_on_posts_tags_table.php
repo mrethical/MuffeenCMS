@@ -25,6 +25,8 @@ class AddSlugColumnOnPostsTagsTable extends Migration
      */
     public function down()
     {
-
+        Schema::table('posts_tags', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 }
