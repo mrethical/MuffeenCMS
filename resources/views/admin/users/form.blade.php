@@ -33,6 +33,10 @@
             <div class="form-group">
                 <label for="type">Type:</label>
                 <select class="form-control" name="type" id="type">
+                    @if(auth()->user()->type === 'superadmin')
+                        <option {{ (old('type', $user->type) === 'superadmin') ? 'selected ' : '' }}
+                                value="superadmin">superadmin</option>
+                    @endif
                     <option {{ (old('type', $user->type) === 'admin') ? 'selected ' : '' }}
                             value="admin">admin</option>
                     <option {{ (old('type', $user->type) === 'member') ? 'selected ' : '' }}
