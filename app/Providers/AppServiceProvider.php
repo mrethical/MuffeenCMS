@@ -34,6 +34,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('recent_posts', \App\Repositories\Posts::getMostRecent(3));
             $view->with('tags', \App\Repositories\PostTags::getAllByName());
         });
+        View::composer('admin.users.form', function($view) {
+            $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
+        });
+        View::composer('_layouts.admin', function($view) {
+            $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
+        });
+        View::composer('_layouts.admin-sidebar', function($view) {
+            $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
+        });
     }
 
     /**

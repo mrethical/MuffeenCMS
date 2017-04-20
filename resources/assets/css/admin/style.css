@@ -22,3 +22,7 @@ table > tbody > tr.empty-table-row > td {
 .jq-toast-single .jq-toast-loaded {
     width: 0;
 }
+
+.user-pic {
+    border-radius: 100%;
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Repositories\Users;
+use App\Services\Uploads;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -49,14 +50,26 @@ class UsersController extends Controller
             'name' => 'required|unique:users|max:255',
             'email' => 'required|email|unique:users|max:255',
             'type' => 'required',
-            'password' => 'required|confirmed|min:6|max:255'
+            'password' => 'required|confirmed|min:6|max:255',
+            'first_name' => 'required|max:255',
+            'middle_name' => 'max:255',
+            'last_name' => 'required|max:255'
         ]);
+
+        if ($request->picture) {
+            $uploads = new Uploads;
+            $picture = $uploads->saveUser($request->picture);
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'type' => $request->type,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'first_name' => $request->first_name,
+            'middle_name' => ($request->middle_name) ? $request->middle_name : null,
+            'last_name' => $request->last_name,
+            'picture' => isset($picture) ? $picture : null
         ]);
 
         $request->session()->flash('added', $user->id);
@@ -68,7 +81,9 @@ class UsersController extends Controller
     {
         $this->authorize('update', $user);
 
-        return view('admin.users.edit', compact('user'));
+        $password_required = false;
+
+        return view('admin.users.edit', compact('user', 'password_required'));
     }
 
 
@@ -76,17 +91,38 @@ class UsersController extends Controller
     {
         $this->authorize('update', $user);
 
-        $this->validate($request, [
+        $validate_args = [
             'name' => 'required|unique:users,name,'.$user->id.'|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id.'|max:255',
             'type' => 'required',
-            'password' => 'required|confirmed|min:6|max:255'
-        ]);
+            'first_name' => 'required|max:255',
+            'middle_name' => 'max:255',
+            'last_name' => 'required|max:255'
+        ];
+
+        if ($request->password) {
+            $validate_args['password'] = 'confirmed|min:6|max:255';
+        }
+
+        $this->validate($request, $validate_args);
+
+        if ($request->picture) {
+            $uploads = new Uploads;
+            $picture = $uploads->saveUser($request->picture, $user->picture);
+        }
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->type = $request->type;
-        $user->password = bcrypt($request->password);
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->first_name = $request->first_name;
+        $user->middle_name = $request->middle_name;
+        $user->last_name = $request->last_name;
+        if (isset($picture)) {
+            $user->picture = $picture;
+        }
         $user->update();
 
         $request->session()->flash('edited', $user->id);

@@ -1,3 +1,7 @@
+<?php 
+    $user = auth()->user();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,13 +35,16 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span>{{ auth()->user()->name }}</span>
+                            <img src="{{ ($user->picture)
+                                    ? url($uploads_users_url . '/' . $user->picture) : url('/img/user.png') }}"
+                                 class="user-image" alt="User Image">
+                            <span>{{ $user->first_name . ' ' . $user->last_name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 <p>
-                                    {{ auth()->user()->name }}
-                                    <small>{{ auth()->user()->type }}</small>
+                                    {{ $user->first_name . ' ' . $user->last_name }}
+                                    <small>{{ $user->type }}</small>
                                 </p>
                             </li>
                             <li class="user-footer">
@@ -74,8 +81,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
 <script>
     var server_url = '{{ url('/') }}';
-    var uid = {{ auth()->user()->id }};
-    var utype = '{{ auth()->user()->type }}';
+    var uid = {{ $user->id }};
+    var utype = '{{ $user->type }}';
 </script>
 @yield('scripts')
 </body>
