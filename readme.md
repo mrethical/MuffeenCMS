@@ -10,7 +10,7 @@ Since MuffeenCMS is based on Laravel Framework, the same requirements also appli
   * Mbstring PHP Extension
   * Tokenizer PHP Extension
   * XML PHP Extension
-* [Composer](https://getcomposer.org) installed to load the dependencies of Lavalite.
+* [Composer](https://getcomposer.org) installed to load the dependencies.
 * NodeJS with NPM
   * Required to push and modify CSS an JS files since these files are compiled using Webpack.
 
