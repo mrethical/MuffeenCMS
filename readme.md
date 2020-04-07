@@ -4,7 +4,7 @@ A Laravel 5.4 based CMS boilerplate to get started on any kind of project.
 ## System Requirements
 Since MuffeenCMS is based on Laravel Framework, the same requirements also applies.
 
-* PHP >= 5.6.4
+* PHP >= 7.0
   * OpenSSL PHP Extension
   * PDO PHP Extension
   * Mbstring PHP Extension
