@@ -18,8 +18,8 @@ Since MuffeenCMS is based on Laravel Framework, the same requirements also appli
 Please check the system requirements before installing MuffeenCMS.
 
 1. You may install by cloning from github.
-   `git clone https://github.com/muffeen/MuffeenCMS.git`
-2. On the project's root directory, run `composer update`
+   `git clone https://github.com/mrethical/MuffeenCMS.git`
+2. On the project's root directory, run `composer install`
 3. Rename .env.example to .env and set your database configuration there.
 4. Run `php artisan key:generate`
 5. Run migrations with seed:
@@ -56,7 +56,7 @@ http://stackoverflow.com/questions/30639174/file-permissions-for-laravel-5-and-o
 
 ## Contributing, Questions and Suggestions
 
-Thank you for considering contributing to MuffeenCMS! Please feel free to email me at jeff_magboo19@yahoo.com.
+Thank you for considering contributing to MuffeenCMS! Please feel free to email me at jeffersonmagboo21@gmail.com.
 
 ## License
 
