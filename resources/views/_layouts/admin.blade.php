@@ -1,4 +1,4 @@
-<?php 
+<?php
     $user = auth()->user();
 ?>
 
@@ -71,7 +71,7 @@
     </div>
 
     <footer class="main-footer">
-        Copyright &copy; 2017 | <a href="https://github.com/muffeen/muffeen-cms">MuffeenCMS</a>
+        Copyright &copy; 2017 | <a href="https://github.com/mrethical/muffeen-cms">MuffeenCMS</a>
     </footer>
 
 </div>
