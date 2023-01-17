@@ -52,7 +52,7 @@ class PostTagsController extends Controller
             'slug' => $request->slug
         ]);
 
-        return response()->json(['success' => 'success']);
+        return response()->json(['success' => 'success'], 201);
     }
 
     public function update(Request $request, PostTag $tag)

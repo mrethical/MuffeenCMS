@@ -81,7 +81,7 @@ class ResourcesController extends Controller
             $request->session()->flash('added', true);
             return redirect('admin/resources/create');
         } else {
-            return response()->json(['success' => 'success']);
+            return response()->json(['success' => 'success'], 201);
         }
     }
 

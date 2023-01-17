@@ -32,7 +32,7 @@ class ResourceCategoriesController extends Controller
 
         return view('admin.resources.categories');
     }
-    
+
     public function store(Request $request)
     {
         $this->authorize('create', ResourceCategory::class);
@@ -45,7 +45,7 @@ class ResourceCategoriesController extends Controller
             'name' => $request->name
         ]);
 
-        return response()->json(['success' => 'success']);
+        return response()->json(['success' => 'success'], 201);
     }
 
     public function update(Request $request, ResourceCategory $category)
@@ -69,5 +69,5 @@ class ResourceCategoriesController extends Controller
 
         return response()->json(['success' => 'success']);
     }
-    
+
 }

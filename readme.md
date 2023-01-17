@@ -1,5 +1,5 @@
 ## MuffeenCMS.
-A Laravel 5.4 based CMS boilerplate to get started on any kind of project.
+A Laravel 5.5 based CMS boilerplate to get started on any kind of project.
 
 ## System Requirements
 Since MuffeenCMS is based on Laravel Framework, the same requirements also applies.
