@@ -9,6 +9,16 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -47,15 +57,5 @@ class AppServiceProvider extends ServiceProvider
             $view->with('uploads_small_url', \App\Services\Uploads::getUploadUrls()['upload_images_small']);
             $view->with('uploads_users_url', \App\Services\Uploads::getUploadUrls()['upload_users']);
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
