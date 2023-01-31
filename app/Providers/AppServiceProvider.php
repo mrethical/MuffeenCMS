@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
         View::composer('admin.resources.select-image', function($view) {
             $view->with('resource_categories', \App\Repositories\ResourceCategories::getAllByName());
             $view->with('resources', \App\Repositories\Resources::getAllImageByName());

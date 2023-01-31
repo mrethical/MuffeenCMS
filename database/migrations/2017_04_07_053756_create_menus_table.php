@@ -14,26 +14,23 @@ class CreateMenusTable extends Migration
     public function up()
     {
         Schema::create('menu_groups', function (Blueprint $table) {
-            $table->unsignedSmallInteger('id')->i;
+            $table->bigIncrements('id');
             $table->string('name', 16);
             $table->timestamps();
         });
         Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedSmallInteger('menu_group_id');
+            $table->unsignedBigInteger('menu_group_id');
             $table->string('url');
             $table->unsignedInteger('parent_id')->nullable();
             $table->timestamps();
         });
         Schema::create('menu_order', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('menu_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('menu_id');
             $table->smallInteger('order');
             $table->timestamps();
-        });
-        Schema::table('menu_groups', function (Blueprint $table) {
-            $table->primary('id');
         });
         Schema::table('menus', function (Blueprint $table) {
             $table->foreign('menu_group_id')

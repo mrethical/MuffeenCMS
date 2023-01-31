@@ -14,9 +14,9 @@ class CreateResourcesTable extends Migration
     public function up()
     {
         Schema::create('resources', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title');
             $table->string('alt', 1024);
             $table->decimal('size', 11);
@@ -24,8 +24,7 @@ class CreateResourcesTable extends Migration
             $table->unsignedInteger('uploaded_by');
             $table->timestamps();
         });
-        Schema::table('resources', function(Blueprint $table)
-        {
+        Schema::table('resources', function(Blueprint $table) {
             $table->foreign('category_id')
                 ->references('id')->on('resources_categories')
                 ->onDelete('set null');
