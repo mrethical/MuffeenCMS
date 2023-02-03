@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -32,6 +31,8 @@ class Handler extends ExceptionHandler
      *
      * @param  \Exception  $exception
      * @return void
+     *
+     * @throws \Exception
      */
     public function report(Exception $exception)
     {
@@ -43,14 +44,12 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Exception
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof \ErrorException && !config('app.debug')) {
-            return response()->view('errors.500', [], 500);
-        }
-
         return parent::render($request, $exception);
     }
 }
