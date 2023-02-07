@@ -14,7 +14,7 @@ class CreateResourcesCategoriesTable extends Migration
     public function up()
     {
         Schema::create('resources_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\MenuGroup;
 use App\Services\Menus;
 
-class MenuGroupsTableSeeder extends Seeder
+class MenuGroupsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

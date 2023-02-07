@@ -14,12 +14,12 @@ class CreateMenusTable extends Migration
     public function up()
     {
         Schema::create('menu_groups', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name', 16);
             $table->timestamps();
         });
         Schema::create('menus', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->unsignedBigInteger('menu_group_id');
             $table->string('url');
@@ -27,7 +27,7 @@ class CreateMenusTable extends Migration
             $table->timestamps();
         });
         Schema::create('menu_order', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->unsignedBigInteger('menu_id');
             $table->smallInteger('order');
             $table->timestamps();
