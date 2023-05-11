@@ -1,3 +1,5 @@
+/.idea
+/.vscode
 /node_modules
 /public/css
 /public/hot
@@ -11,7 +13,11 @@
 .env
 .env.backup
 .phpunit.result.cache
+composer.lock
+docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
+package-json.lock
 yarn-error.log
+yarn.lock
